@@ -1,10 +1,8 @@
 # Successive Relocation of Marine Species in the Northern Hemisphere from 1970 to 2020
 ## Data and materials availability
 ### Data sources
-Data from the Ocean Biodiversity Information System (OBIS, https://obis.org/data/access/) were used to acquire specific occurrence locations of marine species. These data included a variety of marine species, such as pelagic species, benthic species, bathypelagic fish, gastropods, and many others. The data are for 1970 to 2020 with over 18, 000, 000 entries (~15, 000, 000 in the Northern Hemisphere and the rest in the Southern Hemisphere) and have often been used for global analysis1. We have focused the analysis on the level of family in the Northern Hemisphere, which is a commonly used taxonomical level in biology. The families were located by the latitudes as the research interest was in the north-south shift of marine species. 
+Data from the Ocean Biodiversity Information System (OBIS, https://obis.org/data/access/) were used to acquire specific occurrence locations of marine species.
 
-Data from National Aeronautics and Space Administration (NASA, https://www.earthdata.nasa.gov/) were used to acquire the concentration of marine chlorophyll-a in the Northern Hemisphere from 1998 to 2015. These data cover the latitudinal range from 84°S to 72°N (0.67°latitude resolution and 1.25°  longitude resolution).
-
-A Family Index was used to label a family according to the number of records in the family in the dataset. The higher the number of records or species in a family, the lower the Family Index; e.g., 0 is the family with the most entries and 1 is the family with the second most entries. Fig. S1 shows the number of marine species in each family as a function of the Family Index. Fig. S2 shows the number of families shifting northward or southward from 1970 to 2020 in the Northern Hemisphere.
+Data from National Aeronautics and Space Administration (NASA, https://www.earthdata.nasa.gov/) were used to acquire the concentration of marine chlorophyll-a in the Northern Hemisphere from 1998 to 2015.
 
 The SeaLife Base web (https://www.sealifebase.org/) was used to determine the trophic levels of marine species according to the biological attributes (e.g. diet, body size and functional group) of marine species queried from the website of Mindat.org (https://www.mindat.org/) and the website of World Register of Marine Species (https://www.marinespecies.org/).
