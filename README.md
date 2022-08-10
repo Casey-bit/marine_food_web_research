@@ -16,14 +16,14 @@
 |04_get_percentage_3_regions.py|Calculate the distributional percentage in each region for each family in each year|
 |05_median_reserve_and_denoising.py|`(1). `Calculate the median of latitudinal records for each family in each year; `(2). `Remove families that does not include records from 1970 to 1979; `(3). `Denoising median curves over time|
 
-####`2. `**Main figures**
+`2. `**Main figures**
 |Main figures|Remarks|
 |:---|:---|
 |fig_1|Changes in latitudinal position of marine families in different time periods and changes in total chlorophyll-a concentration with latitude|
 |fig_2|Food web consisting of 559 families and the proportion of species in each trophic level by the direction of shift (the materials in available in [release 5](https://github.com/Casey-bit/marine_food_web_research/releases/tag/level))|
 |fig_3|Shift of families associated with trophic levels|
 
-####`3. `**Supplement figures**
+`3. `**Supplement figures**
 |Supplement figures|Remarks|
 |:---|:---|
 |fig_S1|Number of marine species for each family|
