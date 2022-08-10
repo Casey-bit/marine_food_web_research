@@ -20,7 +20,7 @@
 |Main figures|Remarks|
 |:---|:---|
 |fig_1|Changes in latitudinal position of marine families in different time periods and changes in total chlorophyll-a concentration with latitude|
-|fig_2|Food web consisting of 559 families and the proportion of species in each trophic level by the direction of shift (the materials in available in [release 5](https://github.com/Casey-bit/marine_food_web_research/releases/tag/level)|
+|fig_2|Food web consisting of 559 families and the proportion of species in each trophic level by the direction of shift (the materials in available in [release 5](https://github.com/Casey-bit/marine_food_web_research/releases/tag/level))|
 |fig_3|Shift of families associated with trophic levels|
 
 `3. `Supplement figures
