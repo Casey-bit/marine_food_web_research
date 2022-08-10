@@ -9,7 +9,7 @@
 ### Key codes
 |preprocessing codes|remarks|
 |:---:|:---:|
-|01_extract_occurrence_records.py||
+|01_extract_occurrence_records.py|get the raw data on the basis of occurrence ([release 1](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_1) and [release 2](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_2))|
 |02_count_records_for_family.py||
 |03_get_latitudinal_records.py||
 |04_get_percentage_3_regions.py||
