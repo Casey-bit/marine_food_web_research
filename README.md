@@ -22,3 +22,14 @@
 |fig_1|Changes in latitudinal position of marine families in different time periods and changes in total chlorophyll-a concentration with latitude|
 |fig_2|Food web consisting of 559 families, and the proportion of species in each trophic level by the direction of shift|
 |fig_3|Shift of families associated with trophic levels|
+
+`2. `Supplement figures
+|Supplement figures|Remarks|
+|:---|:---|
+|fig_S1|Number of marine species for each family|
+|fig_S2|Number of families shifting northward or southward from 1970 to 2020 in the Northern Hemisphere|
+|fig_S3|The kernel density estimation plots of the distribution of family trajectories (559 families in fig.2)|
+|fig_S4|Shift routes of families over time (3 regions)|
+|fig_S5|Number of families at each trophic level (1,446 families in total)|
+|fig_S6|Linear regression of fig.3|
+|fig_S7|Shift routes at the taxonomic levels of genus and order|
