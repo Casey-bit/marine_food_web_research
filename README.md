@@ -23,7 +23,7 @@
 |fig_2|Food web consisting of 559 families, and the proportion of species in each trophic level by the direction of shift|
 |fig_3|Shift of families associated with trophic levels|
 
-`2. `Supplement figures
+`3. `Supplement figures
 |Supplement figures|Remarks|
 |:---|:---|
 |fig_S1|Number of marine species for each family|
