@@ -12,5 +12,5 @@
 |01_extract_occurrence_records.py|Get the raw data on the basis of occurrence ([release 1](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_1) and [release 2](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_2))|
 |02_count_records_for_family.py|Count the records number of each family from 1970 to 2020|
 |03_get_latitudinal_records.py|Get the latitudinal records group by family in each year ([release 3](https://github.com/Casey-bit/marine_food_web_research/releases/tag/latitudinal_location))|
-|04_get_percentage_3_regions.py||
-|05_median_reserve_and_denoising.py||
+|04_get_percentage_3_regions.py|Calculate the distributional percentage in each region for each family in each year|
+|05_median_reserve_and_denoising.py|Calculate the median; Remove families that does not include records from 1970 to 1979; Denoising median curves over time|
