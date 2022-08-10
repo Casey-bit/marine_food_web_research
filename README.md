@@ -3,15 +3,14 @@
 ### Data sources and our cleaned version
 >`1. `Data of specific occurrence locations of marine species
 >>URL:(OBIS, https://obis.org/data/access/)
->**The extracted data on the basis of occurrence is available in [release 1](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_1) and [release 2](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_2). And the extracted latitudinal locations is available in [release 3](https://github.com/Casey-bit/marine_food_web_research/releases/tag/latitudinal_location).**
 
-`2. `Data of the concentration of marine chlorophyll-a in the Northern Hemisphere from 1998 to 2015
+**The extracted data on the basis of occurrence is available in [release 1](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_1) and [release 2](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_2). And the extracted latitudinal locations is available in [release 3](https://github.com/Casey-bit/marine_food_web_research/releases/tag/latitudinal_location).**
 
-URL:(NASA, https://www.earthdata.nasa.gov/)
+>`2. `Data of the concentration of marine chlorophyll-a in the Northern Hemisphere from 1998 to 2015
+>>URL:(NASA, https://www.earthdata.nasa.gov/)
 
-`3. `Determination criterion of the trophic levels and the biological attributes of marine species
-
-URLs:
+>`3. `Determination criterion of the trophic levels and the biological attributes of marine species
+>>URLs:
 
 (SeaLifeBase, https://www.sealifebase.org/)
 
