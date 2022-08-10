@@ -17,8 +17,8 @@
 |05_median_reserve_and_denoising.py|`(1). `Calculate the median of latitudinal records for each family in each year; `(2). `Remove families that does not include records from 1970 to 1979; `(3). `Denoising median curves over time|
 
 `2. `Main figures
-|Main figures codes|Remarks|
+|Main figures|Remarks|
 |:---|:---|
-|fig_1||
-|fig_2||
-|fig_3||
+|fig_1|Changes in latitudinal position of marine families in different time periods and changes in total chlorophyll-a concentration with latitude|
+|fig_2|Food web consisting of 559 families, and the proportion of species in each trophic level by the direction of shift|
+|fig_3|Shift of families associated with trophic levels|
