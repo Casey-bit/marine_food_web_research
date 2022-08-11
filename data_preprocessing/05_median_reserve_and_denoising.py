@@ -1,3 +1,12 @@
+'''
+ # Copyright (C) 2022-08-09 School of IoT, Jiangnan University Limited
+ #
+ # All Rights Reserved.
+ #
+ # Paper: Successive Relocation of Marine Species in the Northern Hemisphere from 1970 to 2020
+ # First author: Zhenkai Wu
+ # Corresponding author: Ya Guo, E-mail: guoy@jiangnan.edu.cn
+'''
 from statistics import median
 import numpy as np
 import pandas as pd
