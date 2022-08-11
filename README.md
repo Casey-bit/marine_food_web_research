@@ -11,7 +11,7 @@
 >`3. `Determination criterion of the trophic levels and the biological attributes of marine species
 >>**Raw data sources:**`(1). `SeaLifeBase, https://www.sealifebase.org/  
        `(2). `Mindat, https://www.mindat.org/  
-       `(3). `WRoMS, https://www.marinespecies.org/   
+       `(3). `WoRMS, https://www.marinespecies.org/   
 **Data after processing in this work:** All the biological attributes needed in our analysis are available in [release 4](https://github.com/Casey-bit/marine_food_web_research/releases/tag/attributes).
 ### Key codes
 `1. `**Data preprocessing**
