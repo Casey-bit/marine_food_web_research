@@ -14,8 +14,8 @@
        `(3). `WRoMS, https://www.marinespecies.org/   
 **Data after processing in this work:** All the biological attributes needed in our analysis are available in [release 4](https://github.com/Casey-bit/marine_food_web_research/releases/tag/attributes).
 ### Key codes
-`1. `**Preprocessing**
-|Data preprocessing files|Remarks|
+`1. `**Data preprocessing**
+|Files of data preprocessing|Remarks|
 |:---|:---|
 |01_extract_occurrence_records.py|Get the raw data on the basis of occurrence ([release 1](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_1) and [release 2](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record))|
 |02_count_records_for_family.py|Count the records number of each family from 1970 to 2020|
@@ -24,14 +24,14 @@
 |05_median_reserve_and_denoising.py|`(1). `Calculate the median of latitudinal records for each family in each year; `(2). `Remove families that do not include records from 1970 to 1979; `(3). `Denoise median curves over time|
 
 `2. `**Main figures**
-|Main figures files|Remarks|
+|Files of main figures|Remarks|
 |:---|:---|
 |fig_1|Changes in latitudinal position of marine families in different time periods and changes in total chlorophyll-a concentration with latitude|
 |fig_2|Food web consisting of 559 families and the proportion of species in each trophic level (the materials are available in [release 5](https://github.com/Casey-bit/marine_food_web_research/releases/tag/level))|
 |fig_3|Shift of families associated with trophic levels|
 
 `3. `**Supplement figures**
-|Supplement figures files|Remarks|
+|Files of supplement figures|Remarks|
 |:---|:---|
 |fig_S1|Number of marine species for each family|
 |fig_S2|Number of families shifting northward or southward from 1970 to 2020 in the Northern Hemisphere|
