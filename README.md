@@ -41,12 +41,10 @@
 |fig_S6|Linear regression of Fig.3|
 |fig_S7|Analysis at the taxonomic levels of genus and order|
 ### Copyright
-'''
- # Copyright (C) 2022-08-09 School of IoT, Jiangnan University Limited
- #
- # All Rights Reserved.
- #
- # Paper: Successive Relocation of Marine Species in the Northern Hemisphere from 1970 to 2020
- # First author: Zhenkai Wu
- # Corresponding author: Ya Guo, E-mail: guoy@jiangnan.edu.cn
-'''
+ Copyright (C) 2022-08-09 School of IoT, Jiangnan University Limited
+ 
+ All Rights Reserved.
+ 
+ Paper: Successive Relocation of Marine Species in the Northern Hemisphere from 1970 to 2020
+ First author: Zhenkai Wu
+ Corresponding author: Ya Guo, E-mail: guoy@jiangnan.edu.cn
