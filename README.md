@@ -39,4 +39,4 @@
 |fig_S4|Shift routes of families over time (3 regions)|
 |fig_S5|Number of families at each trophic level (1,446 families in total, [release 4 (attributes)](https://github.com/Casey-bit/marine_food_web_research/releases/tag/attributes))|
 |fig_S6|Linear regression of Fig.3|
-|fig_S7|Shift routes at the taxonomic levels of genus and order|
+|fig_S7|Analysis at the taxonomic levels of genus and order|
