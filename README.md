@@ -3,7 +3,7 @@
 ### Raw data sources and data after processing in this work
 >`1. `Data of specific occurrence locations of marine species
 >>**Raw data sources:** OBIS, https://obis.org/data/access/  
-**Data after processing in this work:** The extracted data on the basis of occurrence records are available in [release 1](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_1) and [release 2](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_2). And the extracted latitudinal locations are available in [release 3](https://github.com/Casey-bit/marine_food_web_research/releases/tag/latitudinal_location).
+**Data after processing in this work:** The extracted data on the basis of occurrence records are available in [release 1](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_1) and [release 2](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record). And the extracted latitudinal locations are available in [release 3](https://github.com/Casey-bit/marine_food_web_research/releases/tag/latitudinal_location).
 
 >`2. `Data of the concentration of marine chlorophyll-a in the Northern Hemisphere from 1998 to 2015
 >>**Raw data sources:** NASA, https://www.earthdata.nasa.gov/   
@@ -17,7 +17,7 @@
 `1. `**Preprocessing**
 |Preprocessing codes|Remarks|
 |:---|:---|
-|01_extract_occurrence_records.py|Get the raw data on the basis of occurrence ([release 1](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_1) and [release 2](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_2))|
+|01_extract_occurrence_records.py|Get the raw data on the basis of occurrence ([release 1](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_1) and [release 2](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record))|
 |02_count_records_for_family.py|Count the records number of each family from 1970 to 2020|
 |03_get_latitudinal_records.py|Get the latitudinal records group by family in each year ([release 3](https://github.com/Casey-bit/marine_food_web_research/releases/tag/latitudinal_location))|
 |04_get_percentage_3_regions.py|Calculate the distributional percentage in each region for each family in each year|
