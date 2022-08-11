@@ -1,6 +1,6 @@
 # Successive Relocation of Marine Species in the Northern Hemisphere from 1970 to 2020
 ## Data and materials availability
-### Data sources and our cleaned materials
+### Raw data sources and data after processing in this work
 >`1. `Data of specific occurrence locations of marine species
 >>**Raw data sources:** OBIS, https://obis.org/data/access/  
 **Data after processing in this work:** The extracted data on the basis of occurrence records are available in [release 1](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_1) and [release 2](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_2). And the extracted latitudinal locations are available in [release 3](https://github.com/Casey-bit/marine_food_web_research/releases/tag/latitudinal_location).
