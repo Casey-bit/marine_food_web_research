@@ -2,17 +2,17 @@
 ## Data and materials availability
 ### Data sources and our cleaned materials
 >`1. `Data of specific occurrence locations of marine species
->>**Data sources:** OBIS, https://obis.org/data/access/  
-**our cleaned materials:** The extracted data on the basis of occurrence records are available in [release 1](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_1) and [release 2](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_2). And the extracted latitudinal locations are available in [release 3](https://github.com/Casey-bit/marine_food_web_research/releases/tag/latitudinal_location).
+>>**Raw data sources:** OBIS, https://obis.org/data/access/  
+**Data after processing in this word:** The extracted data on the basis of occurrence records are available in [release 1](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_1) and [release 2](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_2). And the extracted latitudinal locations are available in [release 3](https://github.com/Casey-bit/marine_food_web_research/releases/tag/latitudinal_location).
 
 >`2. `Data of the concentration of marine chlorophyll-a in the Northern Hemisphere from 1998 to 2015
->>**Data sources:** NASA, https://www.earthdata.nasa.gov/   
+>>**Raw data sources:** NASA, https://www.earthdata.nasa.gov/   
 
 >`3. `Determination criterion of the trophic levels and the biological attributes of marine species
->>**Data sources:**`(1). `SeaLifeBase, https://www.sealifebase.org/  
+>>**Raw data sources:**`(1). `SeaLifeBase, https://www.sealifebase.org/  
        `(2). `Mindat, https://www.mindat.org/  
        `(3). `WRoMS, https://www.marinespecies.org/   
-**our cleaned materials:** All the biological attributes needed in our analysis are available in [release 4](https://github.com/Casey-bit/marine_food_web_research/releases/tag/attributes).
+**Data after processing in this word:** All the biological attributes needed in our analysis are available in [release 4](https://github.com/Casey-bit/marine_food_web_research/releases/tag/attributes).
 ### Key codes
 `1. `**Preprocessing**
 |Preprocessing codes|Remarks|
