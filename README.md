@@ -46,5 +46,5 @@
  All Rights Reserved.   
     
  Paper: Successive Relocation of Marine Species in the Northern Hemisphere from 1970 to 2020   
- First author: Zhenkai Wu  
- Corresponding author: Ya Guo, E-mail: guoy@jiangnan.edu.cn   
+ First Author: Zhenkai Wu  
+ Corresponding Author: Ya Guo, E-mail: guoy@jiangnan.edu.cn   
