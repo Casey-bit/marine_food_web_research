@@ -3,7 +3,7 @@
 ### Data sources and our cleaned versions
 >`1. `Data of specific occurrence locations of marine species
 >>**Data sources:** OBIS, https://obis.org/data/access/  
-**our cleaned versions:The extracted data on the basis of occurrence is available in [release 1](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_1) and [release 2](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_2). And the extracted latitudinal locations is available in [release 3](https://github.com/Casey-bit/marine_food_web_research/releases/tag/latitudinal_location).**
+**our cleaned versions:** The extracted data on the basis of occurrence is available in [release 1](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_1) and [release 2](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_2). And the extracted latitudinal locations is available in [release 3](https://github.com/Casey-bit/marine_food_web_research/releases/tag/latitudinal_location).
 
 >`2. `Data of the concentration of marine chlorophyll-a in the Northern Hemisphere from 1998 to 2015
 >>**Data sources:** NASA, https://www.earthdata.nasa.gov/   
@@ -12,7 +12,7 @@
 >>**Data sources:**:`(1). `SeaLifeBase, https://www.sealifebase.org/  
        `(2). `Mindat, https://www.mindat.org/  
        `(3). `WRoMS, https://www.marinespecies.org/   
-**our cleaned versions:All the biological attributes needed in our analysis are available in [release 4](https://github.com/Casey-bit/marine_food_web_research/releases/tag/attributes).**
+**our cleaned versions:** All the biological attributes needed in our analysis are available in [release 4](https://github.com/Casey-bit/marine_food_web_research/releases/tag/attributes).
 ### Key codes
 `1. `**Preprocessing**
 |Preprocessing codes|Remarks|
