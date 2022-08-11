@@ -1,3 +1,12 @@
+'''
+ # Copyright (C) 2022-08-09 School of IoT, Jiangnan University Limited
+ #
+ # All Rights Reserved.
+ #
+ # Paper: Successive Relocation of Marine Species in the Northern Hemisphere from 1970 to 2020
+ # First author: Zhenkai Wu
+ # Corresponding author: Ya Guo, E-mail: guoy@jiangnan.edu.cn
+'''
 import pandas as pd
 
 data = pd.read_csv('E:\\paper\\obis_20220114.csv\\obis_20220114.csv',usecols=(2,3,16,17,29,32,41,46,51,56,61,83,123))
