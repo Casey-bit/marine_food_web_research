@@ -3,7 +3,7 @@
  #
  # All Rights Reserved.
  #
- # Paper: Successive Relocation of Marine Species in the Northern Hemisphere from 1970 to 2020
+ # Paper: Cascade Shifts of Marine Species in the Northern Hemisphere
  # First author: Zhenkai Wu
  # Corresponding author: Ya Guo, E-mail: guoy@jiangnan.edu.cn
 '''
