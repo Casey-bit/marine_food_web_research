@@ -1,3 +1,12 @@
+'''
+ # Copyright (C) 2022-08-09 School of IoT, Jiangnan University Limited
+ #
+ # All Rights Reserved.
+ #
+ # Paper: Cascade Shifts of Marine Species in the Northern Hemisphere
+ # First author: Zhenkai Wu
+ # Corresponding author: Ya Guo, E-mail: guoy@jiangnan.edu.cn
+'''
 import numpy as np
 import matplotlib.pyplot as plt
 import pickle
