@@ -1,4 +1,4 @@
-# Successive Relocation of Marine Species in the Northern Hemisphere from 1970 to 2020
+# Cascade Shifts of Marine Species in the Northern Hemisphere
 ## Data and materials availability
 ### Raw data sources and data after processing in this work
 >`1. `Data of specific occurrence locations of marine species
@@ -30,21 +30,21 @@
 |fig_2|Food web consisting of 559 families and the proportion of species in each trophic level (the materials are available in [release 5](https://github.com/Casey-bit/marine_food_web_research/releases/tag/level))|
 |fig_3|Shift of families associated with trophic levels|
 
-`3. `**Supplement figures**
+`3. `**Extended Data**
 |Files of supplement figures|Remarks|
 |:---|:---|
-|fig_S1|Number of marine species for each family|
-|fig_S2|Number of families shifting northward or southward from 1970 to 2020 in the Northern Hemisphere|
-|fig_S3|The kernel density estimation plots of the distribution of family trajectories (559 families in Fig.2)|
-|fig_S4|Shift routes of families over time (3 regions)|
-|fig_S5|Number of families at each trophic level (1,446 families in total, [release 4 (attributes)](https://github.com/Casey-bit/marine_food_web_research/releases/tag/attributes))|
-|fig_S6|Linear regression of Fig.3|
-|fig_S7|Analysis at the taxonomic levels of genus and order|
+|fig_1|Number of marine species for each family|
+|fig_2|Number of families shifting northward or southward from 1970 to 2020 in the Northern Hemisphere|
+|fig_3|The kernel density estimation plots of the distribution of family trajectories (559 families in Fig.2)|
+|fig_4|Shift routes of families over time (3 regions)|
+|fig_5|Number of families at each trophic level (1,446 families in total, [release 4 (attributes)](https://github.com/Casey-bit/marine_food_web_research/releases/tag/attributes))|
+|fig_6|Linear regression of Fig.3|
+|fig_7|Analysis at the taxonomic levels of genus and order|
 ## Copyright
  Copyright (C) 2022-08-09 School of IoT, Jiangnan University Limited   
     
  All Rights Reserved.   
     
- Paper: Successive Relocation of Marine Species in the Northern Hemisphere from 1970 to 2020   
+ Paper: Cascade Shifts of Marine Species in the Northern Hemisphere   
  First Author: Zhenkai Wu  
  Corresponding Author: Ya Guo, E-mail: guoy@jiangnan.edu.cn   
