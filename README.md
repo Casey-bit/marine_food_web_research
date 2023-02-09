@@ -3,7 +3,7 @@
 ### Raw data sources and data after processing in this work
 >`1. `Data of specific occurrence locations of marine species
 >>**Raw data sources:** OBIS, https://obis.org/data/access/  
-**Data after processing in this work:** The extracted data on the basis of occurrence records are available in [release 1](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_1) and [release 2](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record).
+**Data after processing in this work:** The extracted data on the basis of occurrence records are available in [release 1](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_1) and [release 2](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record), and the steps for furtherly cleaned data are available in the codes.
 
 >`2. `Data of the concentration of marine chlorophyll-a in the Northern Hemisphere from 1993 to 2020
 >>**Raw data sources:** Copernicus Marine Service, https://marine.copernicus.eu/
