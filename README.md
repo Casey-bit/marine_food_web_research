@@ -1,12 +1,12 @@
-# Cascade Shifts of Marine Species in the Northern Hemisphere
+# Marine Species Shifts and Population Changes Governed by Food Chains in the Northern Hemisphere
 ## Data and materials availability
 ### Raw data sources and data after processing in this work
 >`1. `Data of specific occurrence locations of marine species
 >>**Raw data sources:** OBIS, https://obis.org/data/access/  
-**Data after processing in this work:** The extracted data on the basis of occurrence records are available in [release 1](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_1) and [release 2](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record). And the extracted latitudinal locations are available in [release 3](https://github.com/Casey-bit/marine_food_web_research/releases/tag/latitudinal_location).
+**Data after processing in this work:** The extracted data on the basis of occurrence records are available in [release 1](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_1) and [release 2](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record).
 
->`2. `Data of the concentration of marine chlorophyll-a in the Northern Hemisphere from 1998 to 2015
->>**Raw data sources:** NASA, https://www.earthdata.nasa.gov/   
+>`2. `Data of the concentration of marine chlorophyll-a in the Northern Hemisphere from 1993 to 2020
+>>**Raw data sources:** Copernicus Marine Service, https://marine.copernicus.eu/
 
 >`3. `Determination criterion of the trophic levels and the biological attributes of marine species
 >>**Raw data sources:**`(1). `SeaLifeBase, https://www.sealifebase.org/  
