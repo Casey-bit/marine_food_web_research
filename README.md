@@ -12,7 +12,7 @@
 >>**Raw data sources:**`(1). `SeaLifeBase, https://www.sealifebase.org/  
        `(2). `Mindat, https://www.mindat.org/  
        `(3). `WoRMS, https://www.marinespecies.org/   
-**Data after processing in this work:** All the biological attributes needed in our analysis are available in [release 4](https://github.com/Casey-bit/marine_food_web_research/releases/tag/attributes).
+**Data after processing in this work:** All the biological attributes needed in our analysis are available in [release 3](https://github.com/Casey-bit/marine_food_web_research/releases/tag/level).
 ### Key codes
 `1. `**Data preprocessing**
 |Files|Remarks|
@@ -25,7 +25,7 @@
 |Files|Remarks|
 |:---|:---|
 |fig1|Changes in position of marine families in different time periods|
-|fig2|Food web consisting of 811 families and the proportion of families in each trophic level (the materials are available in [release 5](https://github.com/Casey-bit/marine_food_web_research/releases/tag/level))|
+|fig2|Food web consisting of 811 families and the proportion of families in each trophic level (the materials are available in [release 4](https://github.com/Casey-bit/marine_food_web_research/releases/tag/result))|
 |fig3|Changes of families associated with trophic levels and chlorophyll-a|
 
 `3. `**Extended Data**
