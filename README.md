@@ -15,36 +15,32 @@
 **Data after processing in this work:** All the biological attributes needed in our analysis are available in [release 4](https://github.com/Casey-bit/marine_food_web_research/releases/tag/attributes).
 ### Key codes
 `1. `**Data preprocessing**
-|Files of data preprocessing|Remarks|
+|Files|Remarks|
 |:---|:---|
-|01_extract_occurrence_records.py|Get the raw data on the basis of occurrence ([release 1](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record_1) and [release 2](https://github.com/Casey-bit/marine_food_web_research/releases/tag/occurrence_record))|
-|02_count_records_for_family.py|Count the records number of each family from 1970 to 2020|
-|03_get_latitudinal_records.py|Get the latitudinal records group by family in each year ([release 3](https://github.com/Casey-bit/marine_food_web_research/releases/tag/latitudinal_location))|
-|04_get_percentage_3_regions.py|Calculate the distributional percentage in each region for each family in each year|
-|05_median_reserve_and_denoising.py|`(1). `Calculate the median of latitudinal records for each family in each year; `(2). `Remove families that do not include records from 1970 to 1979; `(3). `Denoise median curves over time|
+|"get_species_list"|Preprocessing the raw data on the basis of occurrence|
+|step3 in "fig2"|Families with records over 35 years and in all decades between 1970 and 2020 were used for determining family location trajectories|
+|step1 in "fig3"|A family was excluded from a category if its population changes were within the least 20% of all family population changes|
 
 `2. `**Main figures**
-|Files of main figures|Remarks|
+|Files|Remarks|
 |:---|:---|
-|fig_1|Changes in latitudinal position of marine families in different time periods and changes in total chlorophyll-a concentration with latitude|
-|fig_2|Food web consisting of 559 families and the proportion of species in each trophic level (the materials are available in [release 5](https://github.com/Casey-bit/marine_food_web_research/releases/tag/level))|
-|fig_3|Shift of families associated with trophic levels|
+|fig1|Changes in position of marine families in different time periods|
+|fig2|Food web consisting of 811 families and the proportion of families in each trophic level (the materials are available in [release 5](https://github.com/Casey-bit/marine_food_web_research/releases/tag/level))|
+|fig3|Changes of families associated with trophic levels and chlorophyll-a|
 
 `3. `**Extended Data**
-|Files of supplement figures|Remarks|
+|Files|Remarks|
 |:---|:---|
-|fig_1|Number of marine species for each family|
-|fig_2|Number of families shifting northward or southward from 1970 to 2020 in the Northern Hemisphere|
-|fig_3|The kernel density estimation plots of the distribution of family trajectories (559 families in Fig.2)|
-|fig_4|Shift routes of families over time (3 regions)|
-|fig_5|Number of families at each trophic level (1,446 families in total, [release 4 (attributes)](https://github.com/Casey-bit/marine_food_web_research/releases/tag/attributes))|
-|fig_6|Linear regression of Fig.3|
-|fig_7|Analysis at the taxonomic levels of genus and order|
+|figS1|Shift routes of families over time. We respectively used records from 1970 to 1990 and records from 2000 to 2020 to determine locational ranges of families|
+|figS2|The average concentration and the change rate of chlorophyll-a in the latitude (A) and depth (B) directions from 1993 to 2020|
+|figS3|The number of families at each trophic level|
+|figS4|Ratio of family populations at higher tropic levels (3, 4, and 5) to those at lower trophic levels (1 and 2) over time in the latitude (A-F) and depth (G-L) directions|
+
 ## Copyright
- Copyright (C) 2022-08-09 School of IoT, Jiangnan University Limited   
+ Copyright (C) 2023-02-09 School of IoT, Jiangnan University Limited   
     
  All Rights Reserved.   
     
- Paper: Cascade Shifts of Marine Species in the Northern Hemisphere   
+ Paper: Marine Species Shifts and Population Changes Governed by Food Chains in the Northern Hemisphere 
  First Author: Zhenkai Wu  
  Corresponding Author: Ya Guo, E-mail: guoy@jiangnan.edu.cn   
