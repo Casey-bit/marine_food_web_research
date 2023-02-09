@@ -28,7 +28,7 @@
 |fig2|Food web consisting of 811 families and the proportion of families in each trophic level (the materials are available in [release 4](https://github.com/Casey-bit/marine_food_web_research/releases/tag/result))|
 |fig3|Changes of families associated with trophic levels and chlorophyll-a|
 
-`3. `**Extended Data**
+`3. `**Supplementary Materials**
 |Files|Remarks|
 |:---|:---|
 |figS1|Shift routes of families over time. We respectively used records from 1970 to 1990 and records from 2000 to 2020 to determine locational ranges of families|
