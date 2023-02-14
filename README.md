@@ -24,17 +24,17 @@
 `2. `**Main figures**
 |Files|Remarks|
 |:---|:---|
-|fig1|Changes in position of marine families in different time periods|
-|fig2|Food web consisting of 811 families and the proportion of families in each trophic level (the materials are available in [release 4](https://github.com/Casey-bit/marine_food_web_research/releases/tag/result))|
-|fig3|Changes of families associated with trophic levels and chlorophyll-a|
+|fig.1|Changes in position of marine families in different time periods|
+|fig.2|Food web consisting of 811 families and the proportion of families in each trophic level (the materials are available in [release 4](https://github.com/Casey-bit/marine_food_web_research/releases/tag/result))|
+|fig.3|Changes of families associated with trophic levels and chlorophyll-a|
 
 `3. `**Supplementary Materials**
 |Files|Remarks|
 |:---|:---|
-|figS1|Shift routes of families over time. We respectively used records from 1970 to 1990 and records from 2000 to 2020 to determine locational ranges of families|
-|figS2|The average concentration and the change rate of chlorophyll-a in the latitude (A) and depth (B) directions from 1993 to 2020|
-|figS3|The number of families at each trophic level|
-|figS4|Ratio of family populations at higher tropic levels (3, 4, and 5) to those at lower trophic levels (1 and 2) over time in the latitude (A-F) and depth (G-L) directions|
+|Extend fig.1|Shift routes of families over time. We respectively used records from 1970 to 1990 and records from 2000 to 2020 to determine locational ranges of families|
+|Extend fig.2|The average concentration and the change rate of chlorophyll-a in the latitude (A) and depth (B) directions from 1993 to 2020|
+|Extend fig.3|The number of families at each trophic level|
+|Extend fig.4|Ratio of family populations at higher tropic levels (3, 4, and 5) to those at lower trophic levels (1 and 2) over time in the latitude (A-F) and depth (G-L) directions|
 
 ## Copyright
  Copyright (C) 2023-02-09 School of IoT, Jiangnan University Limited   
