@@ -12,19 +12,6 @@ import pandas as pd
 final_merge_df = pd.read_csv(r'by_family\depth\final_merge_df_0_30_100_10000.csv')
 print(final_merge_df)
 
-# # 小波滤噪
-# def wavelet_denoising(data):
-#     # 小波函数取db4
-#     db4 = pywt.Wavelet('db4')
-#     # 分解
-#     coeffs = pywt.wavedec(data, db4)
-#     # 高频系数置零
-#     coeffs[len(coeffs)-1] *= 0
-#     coeffs[len(coeffs)-2] *= 0
-#     # 重构
-#     meta = pywt.waverec(coeffs, db4)
-#     return meta
-
 migration = [[[[] for after in range(9)] for init in range(9)] for r in range(4)] # 迁移类别,e.g. 0-10 -> 20-30; 50-60 -> 10-20
 mig_onerange_down = [[[] for after in range(9)] for r in range(4)]
 
@@ -74,7 +61,6 @@ for k, single in g:
             else:
                 migration[c][int(lat[c]/25)][int(lat[c + 1]/25)].append(k)
 
-# Source和Target是Plotly将要连接的节点的索引列表，Value是定义这些连接宽度的数字列表。
 
 # data
 label = ["0m~25m", "25m~50m", "50m~75m", "75m~100m", "100m~125m", "125m~150m", "150m~175m", "175m~200m", "over 200m"]
@@ -129,11 +115,11 @@ link = dict(source = source, target = target, value = value)
 node = dict(label = label, pad=50, thickness=20)
 
 fig = make_subplots(
-    rows=1, cols=2,  # 5*2的图形
+    rows=1, cols=2, 
 )
 fig.add_trace(
     go.Scatter(x=[1, 2, 3], y=[5, 10, 15]),
-    row=1, col=1  # 第一行第一列
+    row=1, col=1 
 )
 
 data = go.Sankey(link = link, node=node)# plot
