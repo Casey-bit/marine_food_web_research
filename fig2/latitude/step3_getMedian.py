@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from statsmodels.formula.api import ols
-from collections import Counter #引入Counter
+from collections import Counter 
 import pickle
 from functools import reduce
 import seaborn as sns
@@ -34,10 +34,8 @@ yearTotal = end - start + 1
 
 
 medianPoint = load_variavle(r'fig2\latitude\medianPoint.txt')
-'''
-计算需要保留下来的物种
-'''
-reserve = [] # 记录保留的物种
+
+reserve = [] 
 count = 0
 loss = []
 tot = []
@@ -48,7 +46,6 @@ for family in range(811):
                 if len(medianPoint[family, 30:40][medianPoint[family, 30:40] > 0]) > 0:
                     if len(medianPoint[family, 40:][medianPoint[family, 40:] > 0]) > 0:
                         if len(medianPoint[family, :][medianPoint[family, :] > 0]) > 35:
-                            # 如果51年中有35年有数据，就保留下来
                             num = 0
                             for elem in range(51):
                                 if not medianPoint[family, elem] > 0:
@@ -77,7 +74,7 @@ result = np.zeros_like(rank)
 for i in range(len(rank)):
     result[rank[i]] = i
 
-rank_result = list(enumerate(reserve)) # 重新排序后的顺序，new order --- old order
+rank_result = list(enumerate(reserve))
 for i, j in rank_result:
     rank_result[i] = (result[i], j)
 
@@ -88,18 +85,16 @@ save_variable(rank_result,r'fig2\latitude\reserve.txt')
 
 
 '''
-对median曲线滤噪
+denoise
 '''
 
 corre = []
 
 # 小波滤噪
 def wavelet_denoising(data):
-    # 小波函数取db4
+    # db4
     db4 = pywt.Wavelet('db4')
-    # 分解
     coeffs = pywt.wavedec(data, db4, level=8)
-    # 高频系数置零
     
     # plt.subplot(6 ,2, 1)
     # plt.title('initial')
@@ -122,7 +117,6 @@ def wavelet_denoising(data):
     coeffs[len(coeffs)-4] *= 0
     # coeffs[len(coeffs)-5] *= 0
     # coeffs[len(coeffs)-6] *= 0
-    # 重构
     meta = pywt.waverec(coeffs, db4)
     # plt.subplot(6 ,2, 2)
     # plt.title('final')
@@ -134,22 +128,19 @@ def wavelet_denoising(data):
 
     return meta[:len(data)]
 
-median_denoising = np.array([[np.nan for year in range(yearTotal)] for family in range(811)]) # 每个物种每年的中值
+median_denoising = np.array([[np.nan for year in range(yearTotal)] for family in range(811)])
 
 '''
 插值
 '''
 for family in range(811):
     df = pd.DataFrame(medianPoint[family])
-    df.fillna(df.interpolate(),inplace=True) # 最近前后平均
-    df.fillna(method='backfill',inplace=True) # 向前插值，弥补最开始的缺失值
+    df.fillna(df.interpolate(),inplace=True) 
+    df.fillna(method='backfill',inplace=True) 
     medianPoint[family] = np.copy(np.array(df[0].values.tolist()))
 
 save_variable(medianPoint, r'fig2\latitude\median_interpolation.txt')
 
-'''
-显著性
-'''
 
 def get_p_value(arrA, arrB):
     a = np.array(arrA)
@@ -163,7 +154,7 @@ def R2_fun(y, y_forecast):
     return 1 - (np.sum((y_forecast - y) ** 2)) / (np.sum((y - y_mean) ** 2))
 
 '''
-局部加权回归散点图平滑
+LOWESS
 '''
 
 count = 0
@@ -184,19 +175,18 @@ print(count / len(rank_result))
 
 '''
 
-difference = [] # 五年差
+difference = [] 
 for family in range(medianPoint.shape[0]):
     if family in [y for x, y in rank_result]:
         for year in range(0, yearTotal - 4):
-            diff = np.max(median_denoising[family, year: year + 5]) - median_denoising[family, year] # 最北差值            
+            diff = np.max(median_denoising[family, year: year + 5]) - median_denoising[family, year]       
             difference.append(diff)
-            diff = np.min(median_denoising[family, year: year + 5]) - median_denoising[family, year] # 最南差值            
+            diff = np.min(median_denoising[family, year: year + 5]) - median_denoising[family, year]            
             difference.append(diff)
 
 mean, std = np.mean(difference), np.std(difference,ddof=1)
 print("kstest",stats.kstest(difference, 'norm',(mean,std)))
 
-# 计算置信区间
 conf_intveral = stats.norm.interval(0.95, loc=mean, scale=std)
 print(conf_intveral)
 print(np.percentile(difference,2.5),np.percentile(difference,97.5))
@@ -209,8 +199,6 @@ plt.yticks(fontsize = 20)
 plt.grid()
 plt.show()
 
-
-
 count = 0
 
 for family in range(medianPoint.shape[0]):
@@ -218,7 +206,7 @@ for family in range(medianPoint.shape[0]):
         flag = False
         for year in range(0, yearTotal - 4):
             for time in range(4):
-                diff = median_denoising[family, year + time + 1] - median_denoising[family, year] # 差值
+                diff = median_denoising[family, year + time + 1] - median_denoising[family, year] 
                 if np.fabs(diff) > 5:
                     # median_denoising[family, year + time + 1] = median_denoising[family, year] + diff / 2
                     nanNum = len(median_denoising[family][np.isnan(median_denoising[family])])
@@ -243,13 +231,13 @@ print(count / len(rank_result))
 '''
 count = 0
 count1 = 0
-difference = [] # 五年差
+difference = [] 
 for family in range(medianPoint.shape[0]):
     if family in [y for x, y in rank_result]:
         for year in range(0, yearTotal - 4):
-            diff = np.max(median_denoising[family, year: year + 5]) - median_denoising[family, year] # 最北差值            
+            diff = np.max(median_denoising[family, year: year + 5]) - median_denoising[family, year]       
             difference.append(diff)
-            diff = np.min(median_denoising[family, year: year + 5]) - median_denoising[family, year] # 最南差值            
+            diff = np.min(median_denoising[family, year: year + 5]) - median_denoising[family, year]            
             difference.append(diff)
             if np.max(median_denoising[family, year: year + 5]) - np.min(median_denoising[family, year: year + 5]) > 5:
                 count1 += 1
