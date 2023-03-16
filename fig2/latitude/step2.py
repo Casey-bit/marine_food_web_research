@@ -21,7 +21,7 @@ family.reset_index(inplace=True)
 fam = family['family'].drop_duplicates()
 fam.to_csv(r'fig2\latitude\FamilyNum_1.csv')
 
-median_array = np.array([[np.nan for year in range(51)] for family in range(len(family))]) # 每个物种每年的中值
+median_array = np.array([[np.nan for year in range(51)] for family in range(len(family))]) 
 count_array = np.array([0.0 for family in range(len(family))])
 
 g = median_df.groupby(['family'])
