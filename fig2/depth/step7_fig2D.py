@@ -170,7 +170,7 @@ for idx in range(4):
     data_left = [idx + 1 - i/2 for i in level_prop]
     data_right = [idx + 1 + i/2 for i in level_prop]
     color_list = [(140/255, 185/255, 0/255), (20/255, 178/255, 255/255), (255/255, 194/255, 102/255),
-                  (255/255, 112/255, 69/255), (255/255, 26/255, 128/255)]  # 柱子颜色
+                  (255/255, 112/255, 69/255), (255/255, 26/255, 128/255)] 
 
     axes = []
     for l in range(5):
@@ -253,7 +253,6 @@ for idx in range(4):
             #   str(round(data[i+1] / data[i], 3) * 100) + '%',
             #   color='black', alpha=0.8, size=16, ha="center")
 
-            # 绘制多边形
             polygons.append(Polygon(xy=np.array([(data_left[i+1], i + 2 - 0.45), 
                                                 (data_right[i+1],
                                                  i + 2 - 0.45),
