@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from statsmodels.formula.api import ols
-from collections import Counter #引入Counter
+from collections import Counter 
 import pickle
 from functools import reduce
 import seaborn as sns
@@ -24,25 +24,17 @@ font2 = {
 }
 
 
-'''
-去除无效数据
-'''
 chl_data = pd.read_csv(r'chl_calc\chl_data.csv')
 chl_data.replace('--', np.nan, inplace=True)
 chl_data.dropna(inplace=True)
 chl_data['mean_chl'] = chl_data['mean_chl'].astype(float)
-'''
-保留200米
-'''
+
 chl_data = chl_data[chl_data['depth'] < 200]
-'''
-求平均
-'''
+
 chl_data_lati_mean = chl_data.groupby(['year','month','latitude'])['mean_chl'].mean().reset_index()
 chl_data_lati_year_mean = chl_data_lati_mean.groupby(['year','latitude'])['mean_chl'].mean().reset_index()
 
 print(chl_data_lati_year_mean)
-
 
 '''
 mk_test
