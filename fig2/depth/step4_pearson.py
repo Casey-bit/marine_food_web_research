@@ -25,14 +25,14 @@ dffamily = pd.read_csv(r'fig2\depth\FamilyNum_1.csv')
 familyName = dffamily['family'].values.tolist()
 yearTotal = 2020 - 1970 + 1
 '''
-按照reserve里面的顺序提取出medianPoint中的物种
+get reserved families
 '''
 # 2841,51
 medianPoint = load_variavle(r'fig2\depth\median_denoising.txt')
 reserve = load_variavle(r'fig2\depth\reserve.txt')
 
 medianPointExtract = np.array([[0.0 for year in range(yearTotal)] for family in range(len(reserve))])
-familyExtract = [[] for family in range(len(reserve))] # 提取出的family名，按照reserve顺序排列
+familyExtract = [[] for family in range(len(reserve))]
 
 for i, j in reserve:
     medianPointExtract[i] = np.copy(medianPoint[j])
