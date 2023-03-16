@@ -9,41 +9,19 @@ from linear_regression import regression
 from mk_test import mk_test
 from axes_frame import set_axis
 
-'''
-去除无效数据
-'''
+
 chl_data = pd.read_csv(r'chl_calc\chl_data.csv')
 chl_data.replace('--', np.nan, inplace=True)
 chl_data.dropna(inplace=True)
 chl_data['mean_chl'] = chl_data['mean_chl'].astype(float)
-'''
-保留200米
-'''
+
 chl_data = chl_data[chl_data['depth'] < 200]
-'''
-求平均
-'''
+
 chl_data_lati_mean = chl_data.groupby(['year','month','latitude'])['mean_chl'].mean().reset_index()
 chl_data_lati_year_mean = chl_data_lati_mean.groupby(['year','latitude'])['mean_chl'].mean().reset_index()
 
 print(chl_data_lati_year_mean)
 
-'''
-拟合
-'''
-# g = chl_data_lati_mean.groupby(['latitude'])
-# regr_df = pd.DataFrame({'latitude':[], 'k':[], 'R2':[], 'P':[]})
-# for idx, single in g:
-#     k, R2, P = regression([y + m / 12 for y, m in list(zip(single['year'], single['month']))], single['mean_chl'])
-#     regr_df.loc[len(regr_df)] = [float(idx), float(k), float(R2), float(P)]
-
-# print(regr_df)
-# regr_p_df = regr_df[regr_df['P'] < 0.05]
-
-# plt.plot(regr_df['latitude'], regr_df['k'])
-# plt.hlines(0,0,90,'b')
-# plt.scatter(regr_p_df['latitude'], regr_p_df['k'], c = 'r')
-# plt.show()
 
 '''
 mk_test
