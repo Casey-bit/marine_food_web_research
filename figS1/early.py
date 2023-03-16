@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from statsmodels.formula.api import ols
-from collections import Counter #引入Counter
+from collections import Counter
 import pickle
 from functools import reduce
 import seaborn as sns
