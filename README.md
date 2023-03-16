@@ -35,7 +35,3 @@
 |Extended Data Fig.2|figS2|The average concentration and the change rate of chlorophyll-a in the latitude (A) and depth (B) directions from 1993 to 2020|
 |Extended Data Fig.3|figS3|The number of families at each trophic level|
 |Extended Data Fig.4|figS4|Ratio of family populations at higher tropic levels (3, 4, and 5) to those at lower trophic levels (1 and 2) over time in the latitude (A-F) and depth (G-L) directions|
-
-## Paper
-    
- Marine Species Shifts and Population Changes Governed by Food Chains in the Northern Hemisphere  
