@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from statsmodels.formula.api import ols
-from collections import Counter #引入Counter
+from collections import Counter 
 import pickle
 import seaborn as sns
 import scipy
@@ -95,7 +95,7 @@ for fam in range(medianPoint.shape[0]):
         break
     edgeList = []
     # for fam in range(len(familyExtract)):
-    group = [] # 一个R2 > 0.9的集合
+    group = [] # R2 > 0.9
     q = Queue()
     # init = [new for new, old in reserve if old == 1018][0]
     init = fam
@@ -147,11 +147,11 @@ for fam in range(medianPoint.shape[0]):
     # fig,ax1 = plt.subplots()
     # color = ['b','g','r','c','m','y','orange','brown','gray','k']
     # if medianPoint[[old for new,old in reserve if new == group[0]][0]][0] < 40:
-    #     signalOrder = [] # 存放group中物种的第一年所在位置
+    #     signalOrder = [] 
     #     for i in range(len(group)):
     #         ax1.plot(np.arange(1970,2021,1),medianPoint[[old for new,old in reserve if new == group[i]][0]][:],label = familyExtract[group[i]][0].split('-')[-1],color=color[i])
     #         signalOrder.append(medianPoint[[old for new,old in reserve if new == group[i]][0]][0])
-    #     isBusy = np.zeros(90, dtype=bool)  # 是否可以写标签，防止堆积
+    #     isBusy = np.zeros(90, dtype=bool) 
     #     for i in range(len(group)):
     #         locationUp = int(signalOrder[i])
     #         locationDown = int(signalOrder[i])
@@ -169,7 +169,6 @@ for fam in range(medianPoint.shape[0]):
         # # ax1.grid() 
         # ax1.text(1962,64,'K',verticalalignment="top",horizontalalignment="left",fontdict=font1)
         # ax1.text(1965,64,'Generated Food Chain Examples',verticalalignment="top",horizontalalignment="left",fontdict=font1)
-        # # 这些均用相对数来表示，大小在0-1之间
         # left,bottom,width,height = [0.2,0.2,0.3,0.2]
         # ax2 = fig.add_axes([left,bottom,width,height])
         # ax2.set_ylim([40,60])
