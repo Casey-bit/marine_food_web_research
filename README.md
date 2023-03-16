@@ -36,12 +36,6 @@
 |Extended Data Fig.3|figS3|The number of families at each trophic level|
 |Extended Data Fig.4|figS4|Ratio of family populations at higher tropic levels (3, 4, and 5) to those at lower trophic levels (1 and 2) over time in the latitude (A-F) and depth (G-L) directions|
 
-## Copyright
- Copyright (C) 2023-02-09 School of IoT, Jiangnan University Limited   
+## Paper
     
- All Rights Reserved.   
-    
- Paper: Marine Species Shifts and Population Changes Governed by Food Chains in the Northern Hemisphere 
- 
- First Author: Zhenkai Wu  
- Corresponding Author: Ya Guo, E-mail: guoy@jiangnan.edu.cn   
+ Marine Species Shifts and Population Changes Governed by Food Chains in the Northern Hemisphere  
