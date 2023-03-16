@@ -12,7 +12,7 @@ import pandas as pd
 final_merge_df = pd.read_csv(r'by_family\depth\final_merge_df_0_30_100_10000.csv')
 print(final_merge_df)
 
-migration = [[[[] for after in range(9)] for init in range(9)] for r in range(4)] # 迁移类别,e.g. 0-10 -> 20-30; 50-60 -> 10-20
+migration = [[[[] for after in range(9)] for init in range(9)] for r in range(4)] 
 mig_onerange_down = [[[] for after in range(9)] for r in range(4)]
 
 g = final_merge_df.groupby(['family'])
