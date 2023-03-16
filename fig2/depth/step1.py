@@ -15,7 +15,7 @@ import operator
 total_occurrence = pd.read_csv('E:\\paper\\obis_20221006\\data_Occurrence.csv')
 northern = total_occurrence[total_occurrence['decimallatitude'] > 0]
 '''
-2.得到年份,保留1970-2020
+2.1970-2020
 '''
 northern['year'] = northern['eventdate'].astype(str).str.slice(0,4)
 northern.drop(columns=['eventdate'], inplace=True)
@@ -26,18 +26,18 @@ northern = northern[northern['bathymetry'] >= 0].reset_index().drop(columns=['in
 # northern = northern[northern['bathymetry'] < 200].reset_index().drop(columns=['index'])
 # 14351128  13094558
 '''
-3.以family计数
+3.count by family
 '''
 northern['count_by_family'] = northern.groupby(['family'])['bathymetry'].transform('count')
 northern.drop(columns=['Unnamed: 0', 'basisofrecord'], inplace=True)
 northern.dropna(subset=['count_by_family'], inplace=True)
 northern = northern.sort_values(by=['count_by_family'], ascending=False).reset_index().drop(columns=['index'])
 '''
-去除一年的记录量<100的物种
+extact <100
 '''
 northern = northern[northern['count_by_family'].astype(int) >= 100].reset_index().drop(columns=['index'])
 '''
-判断所属区域
+judge range
 '''
 northern['year'] = northern['year'].astype(int)
 for i in range(3):
@@ -61,7 +61,7 @@ family_belonging_df['belonging'] = family_belonging_df['belonging'].astype(str).
 print(family_belonging_df)
 
 '''
-按照family year求median
+median
 '''
 family_year_median_df = northern.groupby(['family', 'year'])['bathymetry'].median().reset_index().rename(columns={"bathymetry": "median"})
 
