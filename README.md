@@ -17,9 +17,9 @@
 `1. `**Data preprocessing**
 |Files|Remarks|
 |:---|:---|
-|"get_species_list"|`1. `Preprocessing the raw data with some criteria on the basis of occurrence. `2. `Data correction for Fig. 1 and Fig. 2|
+|"get_species_list"|`1. `Preprocessing the raw data with some criteria on the basis of occurrence. `2. `Data correction for Fig.1 and Fig.2|
 |step3 in "fig2"|Families with records over 35 years and in all decades between 1970 and 2020 were used for determining family location trajectories|
-|step1 in "fig3"|`1. `Data correction for Fig. 3. `2. `A family was excluded from a category if its population changes were within the least 20% of all family population changes|
+|step1 in "fig3"|`1. `Data correction for Fig.3. `2. `A family was excluded from a category if its population changes were within the least 20% of all family population changes|
 
 `2. `**Main figures**
 |Figures|Files|Remarks|
@@ -31,7 +31,9 @@
 `3. `**Supplementary Materials**
 |Figures|Files|Remarks|
 |:---|:---|:---|
-|Extended Data Fig.1|figS1|Shift routes of families over time. We respectively used records from 1970 to 1990 and records from 2000 to 2020 to determine locational ranges of families|
-|Extended Data Fig.2|figS2|The average concentration and the change rate of chlorophyll-a in the latitude (A) and depth (B) directions from 1993 to 2020|
-|Extended Data Fig.3|figS3|The number of families at each trophic level|
-|Extended Data Fig.4|figS4|Ratio of family populations at higher tropic levels (3, 4, and 5) to those at lower trophic levels (1 and 2) over time in the latitude (A-F) and depth (G-L) directions|
+|Extended Data Fig.1|figS1_S2|Histograms of marine life with records of latitudes|
+|Extended Data Fig.2|figS1_S2|Histograms of marine life with records of depths|
+|Extended Data Fig.3|figS3|Shift routes of families over time. We respectively used records from 1970 to 1990 and records from 2000 to 2020 to determine locational ranges of families|
+|Extended Data Fig.4|figS4|The average concentration and the change rate of chlorophyll-a in the latitude (A) and depth (B) directions from 1993 to 2020|
+|Extended Data Fig.5|figS5|The number of families at each trophic level|
+|Extended Data Fig.6|figS6|Ratio of family populations at higher tropic levels (3, 4, and 5) to those at lower trophic levels (1 and 2) over time in the latitude (A-F) and depth (G-L) directions|
