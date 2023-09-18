@@ -41,7 +41,7 @@ northern['count_by_year'] = northern.groupby(['family','year'])['bathymetry'].tr
 exclude families with records less than 100 
 '''
 northern = northern[northern['count_by_family'].astype(int) >= 100].reset_index().drop(columns=['index'])
-
+northern.to_csv(r'by_family\method_2\new230729\northern_d.csv')
 '''
 ranges' weight
 data correction
