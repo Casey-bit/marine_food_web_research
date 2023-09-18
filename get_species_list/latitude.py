@@ -42,6 +42,18 @@ exclude families with records less than 100
 '''
 
 northern = northern[northern['count_by_family'].astype(int) >= 100].reset_index().drop(columns=['index'])
+
+'''
+ranges' weight
+data correction
+'''
+northern['range'] = pd.cut(northern['decimallatitude'], [0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90], labels=np.arange(1,19,1))
+year_range_count = northern.groupby(['year','range'])['decimallatitude'].count().reset_index()
+year_range_count['range_mean'] = year_range_count.groupby(['range'])['decimallatitude'].transform('mean')
+year_range_count['corr'] = year_range_count['range_mean'] / year_range_count['decimallatitude']
+year_range_count['corr'][year_range_count['corr'] > 1e8] = 0
+year_range_count = year_range_count[['year','range','corr']]
+
 '''
 judge belonging range
 '''
@@ -59,7 +71,17 @@ family_belonging_df['belonging'] = family_belonging_df['belonging'].astype(str).
 '''
 get yearly median
 '''
-family_year_median_df = northern.groupby(['family', 'year'])['decimallatitude'].median().reset_index().rename(columns={"decimallatitude": "median"})
+family_year_median_df = northern.groupby(['family', 'year', 'range'])['decimallatitude'].median().reset_index().rename(columns={"decimallatitude": "median"})
+family_year_median_df.dropna(inplace=True)
+family_year_median_df = family_year_median_df.merge(year_range_count, on=['year','range'])
+family_year_median_df['median_up'] = family_year_median_df['median'] * family_year_median_df['corr']
+
+family_year_corrsum = family_year_median_df.groupby(['family','year'])['corr'].sum().reset_index()
+family_year_medupsum = family_year_median_df.groupby(['family','year'])['median_up'].sum().reset_index()
+
+family_year_median_df = pd.merge(family_year_corrsum, family_year_medupsum, on=['family','year'])
+family_year_median_df['median'] = family_year_median_df['median_up'] / family_year_median_df['corr']
+family_year_median_df = family_year_median_df[['family','year','median']]
 
 merge_df = pd.merge(family_belonging_df, family_year_median_df, left_on=['family','year'], right_on=['family','year'])
 print(family_belonging_df)
@@ -108,8 +130,8 @@ family_level.drop_duplicates(subset=['family'],inplace=True)
 family_level.dropna(inplace=True)
 final_merge_df = pd.merge(final_merge_df, family_level, left_on='family', right_on='family')
 
-final_merge_df = final_merge_df[['family','level','defined_year','median','count','count_by_year','range1_count','range2_count','range3_count']]
-final_merge_df = final_merge_df.loc[:, ['family','level','defined_year','median','count','count_by_year','range1_count','range2_count','range3_count']]
+final_merge_df = final_merge_df[['family','level','index','defined_year','median','count','count_by_year','range1_count','range2_count','range3_count']]
+final_merge_df = final_merge_df.loc[:, ['family','level','index','defined_year','median','count','count_by_year','range1_count','range2_count','range3_count']]
 # final_merge_df = final_merge_df[final_merge_df['level'] != 1]
 final_merge_df.to_csv(r'by_family\final_merge_df.csv')
 
