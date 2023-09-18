@@ -130,8 +130,8 @@ family_level.drop_duplicates(subset=['family'],inplace=True)
 family_level.dropna(inplace=True)
 final_merge_df = pd.merge(final_merge_df, family_level, left_on='family', right_on='family')
 
-final_merge_df = final_merge_df[['family','level','index','defined_year','median','count','count_by_year','range1_count','range2_count','range3_count']]
-final_merge_df = final_merge_df.loc[:, ['family','level','index','defined_year','median','count','count_by_year','range1_count','range2_count','range3_count']]
+final_merge_df = final_merge_df[['family','defined_year','median','count','count_by_year','range1_count','range2_count','range3_count']]
+final_merge_df = final_merge_df.loc[:, ['family','defined_year','median','count','count_by_year','range1_count','range2_count','range3_count']]
 # final_merge_df = final_merge_df[final_merge_df['level'] != 1]
 final_merge_df.to_csv(r'by_family\final_merge_df.csv')
 
