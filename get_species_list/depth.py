@@ -43,6 +43,20 @@ exclude families with records less than 100
 northern = northern[northern['count_by_family'].astype(int) >= 100].reset_index().drop(columns=['index'])
 
 '''
+ranges' weight
+data correction
+'''
+northern['range'] = pd.cut(northern['bathymetry'], [0,12.5,25,37.5,50,
+                                                    62.5,75,87.5,100,112.5,
+                                                    125,137.5,150,162.5,175,
+                                                    187.5,200,10000], labels=np.arange(1,18,1))
+year_range_count = northern.groupby(['year','range'])['bathymetry'].count().reset_index()
+year_range_count['range_mean'] = year_range_count.groupby(['range'])['bathymetry'].transform('mean')
+year_range_count['corr'] = year_range_count['range_mean'] / year_range_count['bathymetry']
+year_range_count['corr'][year_range_count['corr'] > 1e8] = 0
+year_range_count = year_range_count[['year','range','corr']]
+
+'''
 judge belonging range
 '''
 for i in range(3):
@@ -64,7 +78,17 @@ family_belonging_df['belonging'] = family_belonging_df['belonging'].astype(str).
 '''
 get yearly median
 '''
-family_year_median_df = northern.groupby(['family', 'year'])['bathymetry'].median().reset_index().rename(columns={"bathymetry": "median"})
+family_year_median_df = northern.groupby(['family', 'year', 'range'])['bathymetry'].median().reset_index().rename(columns={"bathymetry": "median"})
+family_year_median_df.dropna(inplace=True)
+family_year_median_df = family_year_median_df.merge(year_range_count, on=['year','range'])
+family_year_median_df['median_up'] = family_year_median_df['median'] * family_year_median_df['corr']
+
+family_year_corrsum = family_year_median_df.groupby(['family','year'])['corr'].sum().reset_index()
+family_year_medupsum = family_year_median_df.groupby(['family','year'])['median_up'].sum().reset_index()
+
+family_year_median_df = pd.merge(family_year_corrsum, family_year_medupsum, on=['family','year'])
+family_year_median_df['median'] = family_year_median_df['median_up'] / family_year_median_df['corr']
+family_year_median_df = family_year_median_df[['family','year','median']]
 
 family_belonging_df = pd.merge(family_belonging_df, family_year_median_df, left_on=['family','year'], right_on=['family','year'])
 
