@@ -17,9 +17,9 @@
 `1. `**Data preprocessing**
 |Files|Remarks|
 |:---|:---|
-|"get_species_list"|`1. `Preprocessing the raw data with some criteria on the basis of occurrence. `2. `Data correction|
+|"get_species_list"|`1. `Preprocessing the raw data with some criteria on the basis of occurrence. `2. `Data correction for Fig. 1 and Fig. 2|
 |step3 in "fig2"|Families with records over 35 years and in all decades between 1970 and 2020 were used for determining family location trajectories|
-|step1 in "fig3"|`1. `Data normalization. `2. `A family was excluded from a category if its population changes were within the least 20% of all family population changes|
+|step1 in "fig3"|`1. `Data correction for Fig. 3. `2. `A family was excluded from a category if its population changes were within the least 20% of all family population changes|
 
 `2. `**Main figures**
 |Figures|Files|Remarks|
