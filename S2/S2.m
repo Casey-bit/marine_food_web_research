@@ -1,0 +1,151 @@
+clear
+clc
+
+%S2
+%data distribution
+data=readtable('data_Occurrence.csv');
+lon1=table2array(data(:,2));
+lat1=table2array(data(:,3));
+%S2A
+figure(1)
+DenData=zeros(180,360);
+x1=-89:1:90;
+x2=-179:1:180;
+for i=1:179
+        a1=find(lat1>=x1(i) & lat1<x1(i+1));
+        lon_temp=lon1(a1);
+        for j=1:359   
+            DenData(i,j)=length(find(lon_temp>=x2(j) & lon_temp<=x2(j+1)));
+        end
+        disp(i)
+end
+        
+DenData(find(DenData==0))=nan; 
+pcolor(x2,x1,DenData)
+shading flat
+load coast;
+hold on 
+plot(long,lat,'k','linewidth',2)
+ylim([0,90])
+colormap jet; 
+colorbar;   
+set(gca,'xtick',[-150 -100 -50 0 50 100 150 ]);
+set(gca,'xticklabel',{'150\circW','100\circW','50\circW','0','50\circE','100\circE','150\circE'});
+set(gca,'ytick',[20 40 60 80 ]);
+set(gca,'yticklabel',{'20\circN','40\circN','60\circN','80\circN'});
+set(gca,'FontName','Arial','FontSize',17,'FontWeight','bold','FontName','Arial');
+set(gca,'linewidth',2)
+box on
+title('Density distribution of sampling points')       
+set(gca,'Position',[0.1,0.1,0.40,0.4])
+
+
+%%
+%S2B
+dataLevel=readtable('allfamilyleveldata.csv');
+Lon11=table2array(dataLevel(:,1));
+Lat11=table2array(dataLevel(:,2));
+Level11=table2array(dataLevel(:,4));
+dataset=[Lon11,Lat11,Level11];
+
+idx1=find(Level11==1);
+figure(2)
+sz=10;
+scatter(dataset(idx1,1),dataset(idx1,2),sz,'filled')
+load coast;
+hold on 
+plot(long,lat,'k')
+ylim([0,90])
+set(gca,'xtick',[-150 -100 -50 0 50 100 150 ]);
+set(gca,'xticklabel',{'150\circW','100\circW','50\circW','0','50\circE','100\circE','150\circE'});
+set(gca,'ytick',[20 40 60 80 ]);
+set(gca,'yticklabel',{'20\circN','40\circN','60\circN','80\circN'});
+set(gca,'FontName','Arial','FontSize',15,'FontWeight','bold','FontName','Arial');
+set(gca,'linewidth',2)
+box on
+title('Trophic level 1')
+set(gca,'Position',[0.1,0.1,0.40,0.4])
+
+
+%%
+%S2C
+idx2=find(Level11==2);
+figure(3)
+sz=10;
+scatter(dataset(idx2,1),dataset(idx2,2),sz,'filled')
+load coast;
+hold on 
+plot(long,lat,'k')
+ylim([0,90])
+set(gca,'xtick',[-150 -100 -50 0 50 100 150 ]);
+set(gca,'xticklabel',{'150\circW','100\circW','50\circW','0','50\circE','100\circE','150\circE'});
+set(gca,'ytick',[20 40 60 80 ]);
+set(gca,'yticklabel',{'20\circN','40\circN','60\circN','80\circN'});
+set(gca,'FontName','Arial','FontSize',15,'FontWeight','bold','FontName','Arial');
+set(gca,'linewidth',2)
+box on
+title('Trophic level 2')
+set(gca,'Position',[0.1,0.1,0.40,0.4])
+
+%%
+%S2D
+idx3=find(Level11==3);
+figure(4)
+sz=10;
+scatter(dataset(idx3,1),dataset(idx3,2),sz,'filled')
+load coast;
+hold on 
+plot(long,lat,'k')
+ylim([0,90])
+set(gca,'xtick',[-150 -100 -50 0 50 100 150 ]);
+set(gca,'xticklabel',{'150\circW','100\circW','50\circW','0','50\circE','100\circE','150\circE'});
+set(gca,'ytick',[20 40 60 80 ]);
+set(gca,'yticklabel',{'20\circN','40\circN','60\circN','80\circN'});
+set(gca,'FontName','Arial','FontSize',15,'FontWeight','bold','FontName','Arial');
+set(gca,'linewidth',2)
+box on
+title('Trophic level 3')
+set(gca,'Position',[0.1,0.1,0.40,0.4])
+
+%%
+%S2E
+idx4=find(Level11==4);
+figure(5)
+sz=10;
+scatter(dataset(idx4,1),dataset(idx4,2),sz,'filled')
+load coast;
+hold on 
+plot(long,lat,'k')
+ylim([0,90])
+set(gca,'xtick',[-150 -100 -50 0 50 100 150 ]);
+set(gca,'xticklabel',{'150\circW','100\circW','50\circW','0','50\circE','100\circE','150\circE'});
+set(gca,'ytick',[20 40 60 80 ]);
+set(gca,'yticklabel',{'20\circN','40\circN','60\circN','80\circN'});
+set(gca,'FontName','Arial','FontSize',15,'FontWeight','bold','FontName','Arial');
+set(gca,'linewidth',2)
+box on
+title('Trophic level 4')
+set(gca,'Position',[0.1,0.1,0.40,0.4])
+
+%%
+%S2F
+idx5=find(Level11==5);
+figure(6)
+sz=10;
+scatter(dataset(idx5,1),dataset(idx5,2),sz,'filled')
+load coast;
+hold on 
+plot(long,lat,'k')
+ylim([0,90])
+set(gca,'xtick',[-150 -100 -50 0 50 100 150 ]);
+set(gca,'xticklabel',{'150\circW','100\circW','50\circW','0','50\circE','100\circE','150\circE'});
+set(gca,'ytick',[20 40 60 80 ]);
+set(gca,'yticklabel',{'20\circN','40\circN','60\circN','80\circN'});
+set(gca,'FontName','Arial','FontSize',15,'FontWeight','bold','FontName','Arial');
+set(gca,'linewidth',2)
+box on
+title('Trophic level 5')
+set(gca,'Position',[0.1,0.1,0.40,0.4])
+
+
+
