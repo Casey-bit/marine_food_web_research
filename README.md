@@ -15,4 +15,4 @@
 |data_processing.m|Process the data from family_year_median_df.csv and chl_data.csv, and save the output to final_merge_df_latitude.csv, DataNew.mat, and chloroph.mat. These data will be used for subsequent calculations and to generate visualizations.|
 
 ### Brief Instructions for Code Usage
-Please download [this]{https://github.com/Casey-bit/marine_food_web_research/blob/main/20250508%20Brief%20Instructions%20for%20Code%20Usage.docx} for reference.
+Please download [this](https://github.com/Casey-bit/marine_food_web_research/blob/main/20250508%20Brief%20Instructions%20for%20Code%20Usage.docx) for reference.
