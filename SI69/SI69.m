@@ -1,7 +1,7 @@
+
 clear
 clc
-
-DataNew1=load('LatdataM.mat'); 
+DataNew1=load('LatdataM.mat');
 DataNew=DataNew1.lat811;
 idx=find(isnan(DataNew(1,:)));
 DataNew(:,idx)=[];
@@ -9,177 +9,320 @@ DataNew=DataNew';
 
 Year_Start=1970;
 Year_end=2020;
-Year=Year_Start:Year_end;
-
 dat11=DataNew;
-NTR=dat11(:,1); 
-
-idx1=find(NTR==1);
-idx2=find(NTR==2);
-idx3=find(NTR==3);
-idx4=find(NTR==4);
-idx5=find(NTR==5);
-Family_All_Shift=dat11(:,2:end)';
-
-nLevels = 5; 
-latAll = {Family_All_Shift(:,idx1), Family_All_Shift(:,idx2),Family_All_Shift(:,idx3),Family_All_Shift(:,idx4),Family_All_Shift(:,idx5)};
-%% -------------------------------
-yearTrimMeanAll = zeros(51,5);
-trimPercent =10; 
-for i = 1:nLevels
-    latmat = latAll{i};
-    for t = 1:51
-        rowData = latmat(t, ~isnan(latmat(t,:)));
-        if ~isempty(rowData)
-            yearTrimMeanAll(t,i) = trimmean(rowData, trimPercent);
-        else
-            yearTrimMeanAll(t,i) = NaN;
-        end
+Nutrion=dat11(:,1);  
+Year=Year_Start:Year_end;
+alpha=0.05;
+Mk_Result=nan(size(DataNew,1),4);
+for i=1:size(DataNew,1)
+    Nut11=Nutrion(i);
+    Y11=DataNew(i,2:end);
+    idx=find(Y11>-10000000); 
+    Y=Y11(idx);
+    X=Year(idx);
+    if length(X)<=1
+        Mk_Result(i,1)=nan;
+        Mk_Result(i,2)=nan;
+        Mk_Result(i,3)=nan;
+        Mk_Result(i,4)=nan;
+    else
+        
+        [H1,p_value1,trend]=Mann_Kendall(Y',alpha,X);
+        %H=1,significant£¬H=0£¬no significant
+        Mk_Result(i,1)=i;
+        Mk_Result(i,2)=Nut11(1);
+        Mk_Result(i,3)=H1;
+        Mk_Result(i,4)=trend;
     end
+    idx=[];
 end
-
-%% -------------------------------
-chlo=load('chloroph.mat');
-cha=chlo.Cha_Year_mean;
-
-Lat=0:0.25:90;
-
-for k=1:28
-    CC=cha(:,k);
-    a1=0;
-    for i=1:360
-        a1=a1+Lat(i)*CC(i);
-    end
-    Lat_C(k)=a1/sum(CC(1:360));
-end
-
-%% 
-Year=1993:2020;
-figure(1)
-subplot(231)
-[datafit1]=Confidednce95Interval(Year',Lat_C')
-hold on
-[AdjustedR2]=ColorFig(Year,Lat_C)
-xlim([1990,2022])
-ylim([44,48]);
-title('Chlorophyll-a')
-set(gca,'CLim',[1 28],'Colormap',...
-    [0 0 1;0.0370370373129845 0 0.962962985038757;0.0740740746259689 0 0.92592591047287;0.111111111938953 0 0.888888895511627;0.148148149251938 0 0.851851880550385;0.185185179114342 0 0.814814805984497;0.222222223877907 0 0.777777791023254;0.259259253740311 0 0.740740716457367;0.296296298503876 0 0.703703701496124;0.333333343267441 0 0.666666686534882;0.370370358228683 0 0.629629611968994;0.407407402992249 0 0.592592597007751;0.444444447755814 0 0.555555582046509;0.481481492519379 0 0.518518507480621;0.518518507480621 0 0.481481492519379;0.555555582046509 0 0.444444447755814;0.592592597007751 0 0.407407402992249;0.629629611968994 0 0.370370358228683;0.666666686534882 0 0.333333343267441;0.703703701496124 0 0.296296298503876;0.740740716457367 0 0.259259253740311;0.777777791023254 0 0.222222223877907;0.814814805984497 0 0.185185179114342;0.851851880550385 0 0.148148149251938;0.888888895511627 0 0.111111111938953;0.92592591047287 0 0.0740740746259689;0.962962985038757 0 0.0370370373129845;1 0 0],...
-    'FontName','Arial','FontSize',13,'FontWeight','bold','GridAlpha',0.05,...
-    'LineWidth',2);
-colorbar(gca,'Ticks',[1 8 18 28],...
-    'TickLabels',{'1993','2000','2010','2020'})
-caxis([1 28])
-
-
-subplot(232)
-[datafit1]=Confidednce95Interval(Lat_C',yearTrimMeanAll(24:end,1))
-hold on
-[AdjustedR21]=ColorFig(Lat_C,yearTrimMeanAll(24:end,1))
-xlim([44,47.3]);
-ylim([48,58]);
-title('Trophic level 1 vs Chlorophyll-a')
-set(gca,'CLim',[1 28],'Colormap',...
-    [0 0 1;0.0370370373129845 0 0.962962985038757;0.0740740746259689 0 0.92592591047287;0.111111111938953 0 0.888888895511627;0.148148149251938 0 0.851851880550385;0.185185179114342 0 0.814814805984497;0.222222223877907 0 0.777777791023254;0.259259253740311 0 0.740740716457367;0.296296298503876 0 0.703703701496124;0.333333343267441 0 0.666666686534882;0.370370358228683 0 0.629629611968994;0.407407402992249 0 0.592592597007751;0.444444447755814 0 0.555555582046509;0.481481492519379 0 0.518518507480621;0.518518507480621 0 0.481481492519379;0.555555582046509 0 0.444444447755814;0.592592597007751 0 0.407407402992249;0.629629611968994 0 0.370370358228683;0.666666686534882 0 0.333333343267441;0.703703701496124 0 0.296296298503876;0.740740716457367 0 0.259259253740311;0.777777791023254 0 0.222222223877907;0.814814805984497 0 0.185185179114342;0.851851880550385 0 0.148148149251938;0.888888895511627 0 0.111111111938953;0.92592591047287 0 0.0740740746259689;0.962962985038757 0 0.0370370373129845;1 0 0],...
-    'FontName','Arial','FontSize',13,'FontWeight','bold','GridAlpha',0.05,...
-    'LineWidth',2);
-colorbar(gca,'Ticks',[1 8 18 28],...
-    'TickLabels',{'1993','2000','2010','2020'})
-% xlabel('Latitude(\circN)')
-
-subplot(233)
-[datafit1]=Confidednce95Interval(Lat_C',yearTrimMeanAll(24:end,2))
-hold on
-[AdjustedR22]=ColorFig(Lat_C,yearTrimMeanAll(24:end,2))
-% xlim([44,47]);
-xlim([44,47.3]);
-ylim([48,58]);
-title('Trophic level 2 vs Chlorophyll-a')
-% xlabel('Latitude(\circN)')
-set(gca,'CLim',[1 28],'Colormap',...
-    [0 0 1;0.0370370373129845 0 0.962962985038757;0.0740740746259689 0 0.92592591047287;0.111111111938953 0 0.888888895511627;0.148148149251938 0 0.851851880550385;0.185185179114342 0 0.814814805984497;0.222222223877907 0 0.777777791023254;0.259259253740311 0 0.740740716457367;0.296296298503876 0 0.703703701496124;0.333333343267441 0 0.666666686534882;0.370370358228683 0 0.629629611968994;0.407407402992249 0 0.592592597007751;0.444444447755814 0 0.555555582046509;0.481481492519379 0 0.518518507480621;0.518518507480621 0 0.481481492519379;0.555555582046509 0 0.444444447755814;0.592592597007751 0 0.407407402992249;0.629629611968994 0 0.370370358228683;0.666666686534882 0 0.333333343267441;0.703703701496124 0 0.296296298503876;0.740740716457367 0 0.259259253740311;0.777777791023254 0 0.222222223877907;0.814814805984497 0 0.185185179114342;0.851851880550385 0 0.148148149251938;0.888888895511627 0 0.111111111938953;0.92592591047287 0 0.0740740746259689;0.962962985038757 0 0.0370370373129845;1 0 0],...
-    'FontName','Arial','FontSize',13,'FontWeight','bold','GridAlpha',0.05,...
-    'LineWidth',2);
-colorbar(gca,'Ticks',[1 8 18 28],...
-    'TickLabels',{'1993','2000','2010','2020'})
-
-subplot(234)
-[datafit1]=Confidednce95Interval(Lat_C',yearTrimMeanAll(24:end,3))
-hold on
-[AdjustedR23]=ColorFig(Lat_C,yearTrimMeanAll(24:end,3))
-xlim([44,47.3]);
-ylim([48,58]);
-title('Trophic level 3 vs Chlorophyll-a')
-% ylabel('Latitude(\circN)')
-% xlabel('Latitude(\circN)')
-set(gca,'CLim',[1 28],'Colormap',...
-    [0 0 1;0.0370370373129845 0 0.962962985038757;0.0740740746259689 0 0.92592591047287;0.111111111938953 0 0.888888895511627;0.148148149251938 0 0.851851880550385;0.185185179114342 0 0.814814805984497;0.222222223877907 0 0.777777791023254;0.259259253740311 0 0.740740716457367;0.296296298503876 0 0.703703701496124;0.333333343267441 0 0.666666686534882;0.370370358228683 0 0.629629611968994;0.407407402992249 0 0.592592597007751;0.444444447755814 0 0.555555582046509;0.481481492519379 0 0.518518507480621;0.518518507480621 0 0.481481492519379;0.555555582046509 0 0.444444447755814;0.592592597007751 0 0.407407402992249;0.629629611968994 0 0.370370358228683;0.666666686534882 0 0.333333343267441;0.703703701496124 0 0.296296298503876;0.740740716457367 0 0.259259253740311;0.777777791023254 0 0.222222223877907;0.814814805984497 0 0.185185179114342;0.851851880550385 0 0.148148149251938;0.888888895511627 0 0.111111111938953;0.92592591047287 0 0.0740740746259689;0.962962985038757 0 0.0370370373129845;1 0 0],...
-    'FontName','Arial','FontSize',13,'FontWeight','bold','GridAlpha',0.05,...
-    'LineWidth',2);
-colorbar(gca,'Ticks',[1 8 18 28],...
-    'TickLabels',{'1993','2000','2010','2020'})
-% xlabel('Latitude(\circN)')
-
-subplot(235)
-[datafit1]=Confidednce95Interval(Lat_C',yearTrimMeanAll(24:end,4))
-hold on
-[AdjustedR24]=ColorFig(Lat_C,yearTrimMeanAll(24:end,4))
-title('Trophic level 4 vs Chlorophyll-a')
-xlim([44,47.3]);
-ylim([44,58]);
-% ylim([35,58]);
-% xlabel('Latitude(\circN)')
-set(gca,'CLim',[1 28],'Colormap',...
-    [0 0 1;0.0370370373129845 0 0.962962985038757;0.0740740746259689 0 0.92592591047287;0.111111111938953 0 0.888888895511627;0.148148149251938 0 0.851851880550385;0.185185179114342 0 0.814814805984497;0.222222223877907 0 0.777777791023254;0.259259253740311 0 0.740740716457367;0.296296298503876 0 0.703703701496124;0.333333343267441 0 0.666666686534882;0.370370358228683 0 0.629629611968994;0.407407402992249 0 0.592592597007751;0.444444447755814 0 0.555555582046509;0.481481492519379 0 0.518518507480621;0.518518507480621 0 0.481481492519379;0.555555582046509 0 0.444444447755814;0.592592597007751 0 0.407407402992249;0.629629611968994 0 0.370370358228683;0.666666686534882 0 0.333333343267441;0.703703701496124 0 0.296296298503876;0.740740716457367 0 0.259259253740311;0.777777791023254 0 0.222222223877907;0.814814805984497 0 0.185185179114342;0.851851880550385 0 0.148148149251938;0.888888895511627 0 0.111111111938953;0.92592591047287 0 0.0740740746259689;0.962962985038757 0 0.0370370373129845;1 0 0],...
-    'FontName','Arial','FontSize',13,'FontWeight','bold','GridAlpha',0.05,...
-    'LineWidth',2);
-colorbar(gca,'Ticks',[1 8 18 28],...
-    'TickLabels',{'1993','2000','2010','2020'})
-% xlabel('Latitude(\circN)')
-
-subplot(236)
-[datafit1]=Confidednce95Interval(Lat_C',yearTrimMeanAll(24:end,5))
-hold on
-[AdjustedR25]=ColorFig(Lat_C,yearTrimMeanAll(24:end,5))
-xlim([44,47.3]);
-ylim([35,58]);
-title('Trophic level 5 vs Chlorophyll-a')
-% xlabel('Latitude(\circN)')
-set(gca,'CLim',[1 28],'Colormap',...
-    [0 0 1;0.0370370373129845 0 0.962962985038757;0.0740740746259689 0 0.92592591047287;0.111111111938953 0 0.888888895511627;0.148148149251938 0 0.851851880550385;0.185185179114342 0 0.814814805984497;0.222222223877907 0 0.777777791023254;0.259259253740311 0 0.740740716457367;0.296296298503876 0 0.703703701496124;0.333333343267441 0 0.666666686534882;0.370370358228683 0 0.629629611968994;0.407407402992249 0 0.592592597007751;0.444444447755814 0 0.555555582046509;0.481481492519379 0 0.518518507480621;0.518518507480621 0 0.481481492519379;0.555555582046509 0 0.444444447755814;0.592592597007751 0 0.407407402992249;0.629629611968994 0 0.370370358228683;0.666666686534882 0 0.333333343267441;0.703703701496124 0 0.296296298503876;0.740740716457367 0 0.259259253740311;0.777777791023254 0 0.222222223877907;0.814814805984497 0 0.185185179114342;0.851851880550385 0 0.148148149251938;0.888888895511627 0 0.111111111938953;0.92592591047287 0 0.0740740746259689;0.962962985038757 0 0.0370370373129845;1 0 0],...
-    'FontName','Arial','FontSize',13,'FontWeight','bold','GridAlpha',0.05,...
-    'LineWidth',2);
-colorbar(gca,'Ticks',[1 8 18 28],...
-    'TickLabels',{'1993','2000','2010','2020'})
-
-
-% [AdjustedR21]=ColorFig(Lat_C,yearTrimMeanAll(24:end,1));
-% [AdjustedR22]=ColorFig(Lat_C,yearTrimMeanAll(24:end,2));
-% [AdjustedR23]=ColorFig(Lat_C,yearTrimMeanAll(24:end,3));
-% [AdjustedR24]=ColorFig(Lat_C,yearTrimMeanAll(24:end,4));
-% [AdjustedR25]=ColorFig(Lat_C,yearTrimMeanAll(24:end,5));
-
-R2=[AdjustedR21,AdjustedR22,AdjustedR23,AdjustedR24,AdjustedR25];
 
 %%
-figure(2)
-subplot(212)
-bar(1,R2(1),0.4)
+%Mixed
+Mix_idx=[];
+for i=1:size(DataNew,1)
+    temp_H11=Mk_Result(i,3);
+    slope11=Mk_Result(i,4);
+    %Mixed
+    if temp_H11==0 && slope11>-10000
+         Mix_idx=[Mix_idx,i];
+    else
+        disp(i)
+    end
+end
+
+Family_All_Shift=dat11(Mix_idx',2:end)';
+save('Mixed','Family_All_Shift')
+[Mix_velocity]=Velocity(Family_All_Shift,Mix_idx,Nutrion);
+
+
+North_idx=[];
+for i=1:818
+    temp_H11=Mk_Result(i,3);
+    slope11=Mk_Result(i,4);
+    %Poleward
+    if temp_H11==1 && slope11>0
+         North_idx=[North_idx,i];
+    else
+        disp(i)
+    end
+end
+
+Family_All_Shift=dat11(North_idx',2:end)';
+% save('Poleward','Family_All_Shift')
+[Poleward_velocity]=Velocity(Family_All_Shift,North_idx,Nutrion);
+velocity=Poleward_velocity;
+save('Poleward_velocity','velocity')
+
+
+South_idx=[];
+for i=1:818
+    temp_H11=Mk_Result(i,3);
+    slope11=Mk_Result(i,4);
+    %Poleward
+    if temp_H11==1 && slope11<0
+         South_idx=[South_idx,i];
+    else
+        disp(i)
+    end
+end
+
+Family_All_Shift=dat11(South_idx',2:end)';
+% save('Equatorward','Family_All_Shift')
+[Equatorward_velocity]=Velocity(Family_All_Shift,South_idx,Nutrion);
+velocity=Equatorward_velocity;
+save('Equatorward_velocity','velocity')
+
+%%
+
+clear
+clc
+
+N_V=load('Poleward_velocity.mat');
+North_velocity11=N_V.velocity;
+
+S_V=load('Equatorward_velocity.mat');
+South_velocity11=S_V.velocity;
+
+
+
+figure(11)
+Data22=zeros(size(North_velocity11,1),size(North_velocity11,2));
+Data22(find(Data22==0))=nan;
+for i=1:5
+   temp=North_velocity11(:,i);
+   temp(find(isnan(temp)))=[];
+   outliers = isoutlier(temp);  
+   idx11=find(outliers==1); 
+   disp(temp(idx11)) 
+   temp(idx11)=[];
+   Data22(1:length(temp),i)=temp;
+end
+
+%ANOVA test
+[df1,df2,F_value,Number11,MSE,Mean_F5]=AV0VA(Data22);
+alpha=0.05;
+F_critical = finv(1 - alpha, df1, df2); %critical value(4,7,Fcritical=2.37)
+%if F_value>F_critical,then p<0.05;
+
+
+subplot(221)
+h=boxplot(Data22);
+set(h,'linewidth',3)
+ylim([0,80])
+set(gca,'FontName','Arial','FontSize',15,'FontWeight','bold','GridAlpha',0.05);
+set(gca,'linewidth',2)
+set(gca,'xtick',[1,2,3,4,5]);
+set(gca,'xticklabel',{'trophic level 1','trophic level 2','trophic level 3','trophic level 4','trophic level 5'});
+set(gca,'Position',[0.08,0.55,0.50,0.40])
+ylabel('Velocity (km/year)')
+
+V123=[];
+for i=1:3
+    temp=Data22(:,i);
+    temp(find(isnan(temp)))=[];
+    V123=[V123;temp];
+end
+
+V45=[];
+for i=4:5
+    temp=Data22(:,i);
+    temp(find(isnan(temp)))=[];
+    V45=[V45;temp];
+end
+AA=zeros(max([length(V123),length(V45)]),2);
+AA(find(AA==0))=nan;
+AA(1:length(V123),1)=V123;
+AA(1:length(V45),2)=V45;
+
+subplot(222)
+h=boxplot(AA);
+set(h,'linewidth',2) 
+ylim([0,80])
+set(gca,'FontName','Arial','FontSize',15,'FontWeight','bold','GridAlpha',0.05);
+set(gca,'linewidth',2)
+set(gca,'xtick',[1,2]);
+set(gca,'xticklabel',{'trophic level 1-3','trophic level 4-5'});
+set(gca,'Position',[0.65,0.55,0.25,0.40])
+ylabel('Velocity (km/year)')
+
+
+subplot(223)
+Data33=zeros(size(South_velocity11,1),size(South_velocity11,2));
+Data33(find(Data33==0))=nan;
+for i=1:5
+   temp=South_velocity11(:,i);
+   temp(find(isnan(temp)))=[];
+   outliers = isoutlier(temp);  
+   idx11=find(outliers==1); 
+   disp(temp(idx11))
+   temp(idx11)=[]; %
+   Data33(1:length(temp),i)=temp;
+end
+h=boxplot(Data33);
+set(h,'linewidth',3) 
+% ylim([0,80])
+set(gca,'FontName','Arial','FontSize',15,'FontWeight','bold','GridAlpha',0.05);
+set(gca,'linewidth',2)
+set(gca,'xtick',[1,2,3,4,5]);
+set(gca,'xticklabel',{'trophic level 1','trophic level 2','trophic level 3','trophic level 4','trophic level 5'});
+set(gca,'Position',[0.08,0.08,0.50,0.40])
+ylim([-70,0])
+ylabel('Velocity(km/year)')
+
+
+subplot(224)
+
+V123=[];
+for i=1:3
+    temp=Data22(:,i);
+    temp(find(isnan(temp)))=[];
+    V123=[V123;temp];
+end
+
+V45=[];
+for i=4:5
+    temp=Data22(:,i);
+    temp(find(isnan(temp)))=[];
+    V45=[V45;temp];
+end
+
+
+[Up_value,Lower_value]=UporLowerAdjacent(V123);
+x11=V123;
+x11(find(x11>Up_value))=[];
+x11(find(x11<Lower_value))=[];
+
+[Up_value,Lower_value]=UporLowerAdjacent(V45);
+x22=V45;
+x22(find(x22>Up_value))=[];
+x22(find(x22<Lower_value))=[];
+[h, p] = ttest2(x11, x22)
+
+
+
+
+% x11=V123;
+% x22=V45;
+[h, p, ci, stats] = ttest2(x11, x22);
+
+d1=[mean(x11),abs(mean(x22))];
+x1=[1,2];
+error1=[std(x11),std(x22)];
+% figure(2)
+bar(x1(1),d1(1),0.4)
 hold on
-bar(2,R2(2),0.4)
-bar(3,R2(3),0.4)
-bar(4,R2(4),0.4)
-bar(5,R2(5),0.4)
-xlim([0.5 5.5])   
-set(gca,'XTick',[1,2,3,4,5]) 
-hold on
-datafit1=Confidednce95Interval((1:5)',R2')
-set(gca,'FontName','Arial','FontSize',13,'FontWeight','bold','GridAlpha',0.05,...
-    'LineWidth',2)
-xlim([0.5,5.5])
-ylim([0,1])
-ylabel('R^2')
-xlabel('Trophic level(TL)')
-title('R^2 between Chlorophyll-a and TL1-TL5')
-% set(gca,'Position',[0.1,0.15,0.55,0.35])
-set(gca,'Position',[0.1,0.1,0.65,0.35])
+bar(x1(2),d1(2),0.4)
+% hold on
+plot([1,1],[mean(x11)-std(x11),mean(x11)+std(x11)],'b','linewidth',2)
+plot([0.95,1.05],[mean(x11)+std(x11),mean(x11)+std(x11)],'b','linewidth',2)
+plot([0.95,1.05],[mean(x11)-std(x11),mean(x11)-std(x11)],'b','linewidth',2)
+plot([2,2],[mean(x22)-std(x22),mean(x22)+std(x22)],'b','linewidth',2)
+plot([1.95,2.05],[mean(x22)-std(x22),mean(x22)-std(x22)],'b','linewidth',2)
+plot([1.95,2.05],[mean(x22)+std(x22),mean(x22)+std(x22)],'b','linewidth',2)
+set(gca,'FontName','Arial','FontSize',15,'FontWeight','bold','FontName','Arial');
+set(gca,'linewidth',2)
+box on
+set(gca,'Position',[0.65,0.08,0.25,0.40])
+set(gca,'xtick',[1,2]);
+set(gca,'xticklabel',{'trophic(1-3)','trophic(4-5)'});
+ylabel('Velocity (km/year)')
+
+
+figure(11)
+Data22=zeros(size(North_velocity11,1),size(North_velocity11,2));
+Data22(find(Data22==0))=nan;
+for i=1:5
+   temp=North_velocity11(:,i);
+   temp(find(isnan(temp)))=[];
+   outliers = isoutlier(temp);  
+   idx11=find(outliers==1); 
+   disp(temp(idx11)) 
+   temp(idx11)=[];
+   Data22(1:length(temp),i)=temp;
+end
+
+%ANOVA test
+[df1,df2,F_value,Number11,MSE,Mean_F5]=AV0VA(Data22);
+alpha=0.05;
+F_critical = finv(1 - alpha, df1, df2); %critical value(4,7,Fcritical=2.37)
+%if F_value>F_critical,then p<0.05;
+
+
+subplot(221)
+h=boxplot(Data22);
+set(h,'linewidth',3)
+ylim([0,80])
+set(gca,'FontName','Arial','FontSize',15,'FontWeight','bold','GridAlpha',0.05);
+set(gca,'linewidth',2)
+set(gca,'xtick',[1,2,3,4,5]);
+set(gca,'xticklabel',{'trophic level 1','trophic level 2','trophic level 3','trophic level 4','trophic level 5'});
+set(gca,'Position',[0.08,0.55,0.50,0.40])
+
+V123=[];
+for i=1:3
+    temp=Data22(:,i);
+    temp(find(isnan(temp)))=[];
+    V123=[V123;temp];
+end
+
+V45=[];
+for i=4:5
+    temp=Data22(:,i);
+    temp(find(isnan(temp)))=[];
+    V45=[V45;temp];
+end
+AA=zeros(max([length(V123),length(V45)]),2);
+AA(find(AA==0))=nan;
+AA(1:length(V123),1)=V123;
+AA(1:length(V45),2)=V45;
+
+subplot(223)
+Data33=zeros(size(South_velocity11,1),size(South_velocity11,2));
+Data33(find(Data33==0))=nan;
+for i=1:5
+   temp=South_velocity11(:,i);
+   temp(find(isnan(temp)))=[];
+   outliers = isoutlier(temp);  
+   idx11=find(outliers==1); 
+   disp(temp(idx11))
+   temp(idx11)=[]; %
+   Data33(1:length(temp),i)=temp;
+end
+h=boxplot(Data33);
+set(h,'linewidth',3) 
+% ylim([0,80])
+set(gca,'FontName','Arial','FontSize',15,'FontWeight','bold','GridAlpha',0.05);
+set(gca,'linewidth',2)
+set(gca,'xtick',[1,2,3,4,5]);
+set(gca,'xticklabel',{'trophic level 1','trophic level 2','trophic level 3','trophic level 4','trophic level 5'});
+set(gca,'Position',[0.08,0.08,0.50,0.40])
+ylim([-70,0])
+ylabel('Velocity(km/year)')
+
+% mean(North_velocity11(:,1),'omitnan')
+% mean(North_velocity11(:,2),'omitnan')
+
+
+
+

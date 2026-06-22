@@ -12,6 +12,7 @@ Year=Year_Start:Year_end;
 
 dat11=DataNew;
 dat11(find(dat11==5))=4;
+dat11(find(dat11==4))=3;
 NTR=dat11(:,1);  
 
 
@@ -19,15 +20,14 @@ NTR=dat11(:,1);
 idx1=find(NTR==1);
 idx2=find(NTR==2);
 idx3=find(NTR==3);
-idx4=find(NTR==4);
 Family_All_Shift=dat11(:,2:end)';
 
-nLevels = 4;  
-latAll = {Family_All_Shift(:,idx1), Family_All_Shift(:,idx2),Family_All_Shift(:,idx3),Family_All_Shift(:,idx4)};
+nLevels = 3; 
+latAll = {Family_All_Shift(:,idx1), Family_All_Shift(:,idx2),Family_All_Shift(:,idx3)};
 
 
 %% -------------------------------
-yearTrimMeanAll = zeros(51,4);
+yearTrimMeanAll = zeros(51,3);
 trimPercent =10; 
 for i = 1:nLevels
     latmat = latAll{i};
@@ -59,7 +59,7 @@ end
 %% 
 Year=1993:2020;
 figure(1)
-subplot(221)
+subplot(131)
 [datafit1]=Confidednce95Interval(Lat_C',yearTrimMeanAll(24:end,1))
 hold on
 [AdjustedR21]=ColorFig(Lat_C,yearTrimMeanAll(24:end,1))
@@ -73,9 +73,11 @@ set(gca,'CLim',[1 28],'Colormap',...
 colorbar(gca,'Ticks',[1 8 18 28],...
     'TickLabels',{'1993','2000','2010','2020'})
 % xlabel('Latitude(\circN)')
+set(gca,'position',[0.1,0.3,0.25,0.4])
+xlabel('Latitude(\circN)')
 ylabel('Latitude(\circN)')
 
-subplot(222)
+subplot(132)
 [datafit1]=Confidednce95Interval(Lat_C',yearTrimMeanAll(24:end,2))
 hold on
 [AdjustedR22]=ColorFig(Lat_C,yearTrimMeanAll(24:end,2))
@@ -90,14 +92,16 @@ set(gca,'CLim',[1 28],'Colormap',...
     'LineWidth',2);
 colorbar(gca,'Ticks',[1 8 18 28],...
     'TickLabels',{'1993','2000','2010','2020'})
+set(gca,'position',[0.4,0.3,0.25,0.4])
+xlabel('Latitude(\circN)')
 
-subplot(223)
+subplot(133)
 [datafit1]=Confidednce95Interval(Lat_C',yearTrimMeanAll(24:end,3))
 hold on
 [AdjustedR23]=ColorFig(Lat_C,yearTrimMeanAll(24:end,3))
 xlim([44,47.3]);
 ylim([48,58]);
-title('Trophic level 3 vs Chlorophyll-a')
+title('Trophic level 3,4,5 vs Chlorophyll-a')
 % ylabel('Latitude(\circN)')
 % xlabel('Latitude(\circN)')
 set(gca,'CLim',[1 28],'Colormap',...
@@ -106,23 +110,5 @@ set(gca,'CLim',[1 28],'Colormap',...
     'LineWidth',2);
 colorbar(gca,'Ticks',[1 8 18 28],...
     'TickLabels',{'1993','2000','2010','2020'})
+set(gca,'position',[0.7,0.3,0.25,0.4])
 xlabel('Latitude(\circN)')
-ylabel('Latitude(\circN)')
-
-subplot(224)
-[datafit1]=Confidednce95Interval(Lat_C',yearTrimMeanAll(24:end,4))
-hold on
-[AdjustedR24]=ColorFig(Lat_C,yearTrimMeanAll(24:end,4))
-title('Trophic level 4,5 vs Chlorophyll-a')
-xlim([44,47.3]);
-ylim([44,58]);
-% ylim([35,58]);
-% xlabel('Latitude(\circN)')
-set(gca,'CLim',[1 28],'Colormap',...
-    [0 0 1;0.0370370373129845 0 0.962962985038757;0.0740740746259689 0 0.92592591047287;0.111111111938953 0 0.888888895511627;0.148148149251938 0 0.851851880550385;0.185185179114342 0 0.814814805984497;0.222222223877907 0 0.777777791023254;0.259259253740311 0 0.740740716457367;0.296296298503876 0 0.703703701496124;0.333333343267441 0 0.666666686534882;0.370370358228683 0 0.629629611968994;0.407407402992249 0 0.592592597007751;0.444444447755814 0 0.555555582046509;0.481481492519379 0 0.518518507480621;0.518518507480621 0 0.481481492519379;0.555555582046509 0 0.444444447755814;0.592592597007751 0 0.407407402992249;0.629629611968994 0 0.370370358228683;0.666666686534882 0 0.333333343267441;0.703703701496124 0 0.296296298503876;0.740740716457367 0 0.259259253740311;0.777777791023254 0 0.222222223877907;0.814814805984497 0 0.185185179114342;0.851851880550385 0 0.148148149251938;0.888888895511627 0 0.111111111938953;0.92592591047287 0 0.0740740746259689;0.962962985038757 0 0.0370370373129845;1 0 0],...
-    'FontName','Arial','FontSize',13,'FontWeight','bold','GridAlpha',0.05,...
-    'LineWidth',2);
-colorbar(gca,'Ticks',[1 8 18 28],...
-    'TickLabels',{'1993','2000','2010','2020'})
-xlabel('Latitude(\circN)')
-

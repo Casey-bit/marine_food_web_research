@@ -1,49 +1,36 @@
+
 clear
 clc
-
 DataNew1=load('Latdata1.mat'); 
 DataNew=DataNew1.lat811;
 idx=find(isnan(DataNew(1,:)));
 DataNew(:,idx)=[];
-DataNew=DataNew';
+lat811=DataNew;
 
-Year_Start=1970;
-Year_end=2020;
-Year=Year_Start:Year_end;
+a1=DataNew(1,:);
+idx=find(a1==2);
 
-dat11=DataNew;
-NTR=dat11(:,1); 
 
-idx1=find(NTR==1);
-idx2=find(NTR==2);
-idx3=find(NTR==3);
-idx4=find(NTR==4);
-idx5=find(NTR==5);
-Family_All_Shift=dat11(:,2:end)';
 
-nLevels = 5; 
-latAll = {Family_All_Shift(:,idx1), Family_All_Shift(:,idx2),Family_All_Shift(:,idx3),Family_All_Shift(:,idx4),Family_All_Shift(:,idx5)};
-%% -------------------------------
-yearTrimMeanAll = zeros(51,5);
-trimPercent =10; 
-for i = 1:nLevels
-    latmat = latAll{i};
-    for t = 1:51
-        rowData = latmat(t, ~isnan(latmat(t,:)));
-        if ~isempty(rowData)
-            yearTrimMeanAll(t,i) = trimmean(rowData, trimPercent);
-        else
-            yearTrimMeanAll(t,i) = NaN;
-        end
+
+j=0;
+for i=1:size(lat811,2)
+    temp=lat811(1,i);
+    temp1=lat811(:,i);
+    if temp>0
+        j=j+1;
+        TLTrue(:,j)=temp1;
     end
+
 end
 
-%% -------------------------------
-chlo=load('chloroph.mat');
-cha=chlo.Cha_Year_mean;
+
+
+%Chal-a
+Chal1=load('chloroph.mat');
+cha=Chal1.Cha_Year_mean;
 
 Lat=0:0.25:90;
-
 for k=1:28
     CC=cha(:,k);
     a1=0;
@@ -54,83 +41,67 @@ for k=1:28
 end
 
 
-%%
-%1970-2020
-Year=1993:2020;
-figure(3)
-subplot(221)
-[datafit1]=Confidednce95Interval(yearTrimMeanAll(1:end,1),yearTrimMeanAll(1:end,2))
-hold on
-[AdjustedR21]=ColorFig2(yearTrimMeanAll(1:end,1),yearTrimMeanAll(1:end,2))
-% xlim([44,47.3]);
-% ylim([48,58]);
-title('Trophic level 1 vs Trophic leve 2')
-% set(gca,'CLim',[1 28],'Colormap',...
-%     [0 0 1;0.0370370373129845 0 0.962962985038757;0.0740740746259689 0 0.92592591047287;0.111111111938953 0 0.888888895511627;0.148148149251938 0 0.851851880550385;0.185185179114342 0 0.814814805984497;0.222222223877907 0 0.777777791023254;0.259259253740311 0 0.740740716457367;0.296296298503876 0 0.703703701496124;0.333333343267441 0 0.666666686534882;0.370370358228683 0 0.629629611968994;0.407407402992249 0 0.592592597007751;0.444444447755814 0 0.555555582046509;0.481481492519379 0 0.518518507480621;0.518518507480621 0 0.481481492519379;0.555555582046509 0 0.444444447755814;0.592592597007751 0 0.407407402992249;0.629629611968994 0 0.370370358228683;0.666666686534882 0 0.333333343267441;0.703703701496124 0 0.296296298503876;0.740740716457367 0 0.259259253740311;0.777777791023254 0 0.222222223877907;0.814814805984497 0 0.185185179114342;0.851851880550385 0 0.148148149251938;0.888888895511627 0 0.111111111938953;0.92592591047287 0 0.0740740746259689;0.962962985038757 0 0.0370370373129845;1 0 0],...
-%     'FontName','Arial','FontSize',13,'FontWeight','bold','GridAlpha',0.05,...
-%     'LineWidth',2);
-colorbar(gca,'Ticks',[1 10 20 30 40 50],...
-     'TickLabels',{'1970','1980','1990','2000','2010','2020'})
-xlabel('Latitude(\circN)')
-ylabel('Latitude(\circN)')
-xlim([43,58])
-ylim([43,58])
+dT=load('TempeatureNHOCEAN.mat');
+temperature=(dT.Lat_Tempearturemean)';
 
-subplot(222)
-[datafit1]=Confidednce95Interval(yearTrimMeanAll(1:end,2),yearTrimMeanAll(1:end,3))
-hold on
-[AdjustedR21]=ColorFig2(yearTrimMeanAll(1:end,2),yearTrimMeanAll(1:end,3))
-% xlim([44,47.3]);
-% ylim([48,58]);
-title('Trophic level 2 vs Trophic leve 3')
-% set(gca,'CLim',[1 28],'Colormap',...
-%     [0 0 1;0.0370370373129845 0 0.962962985038757;0.0740740746259689 0 0.92592591047287;0.111111111938953 0 0.888888895511627;0.148148149251938 0 0.851851880550385;0.185185179114342 0 0.814814805984497;0.222222223877907 0 0.777777791023254;0.259259253740311 0 0.740740716457367;0.296296298503876 0 0.703703701496124;0.333333343267441 0 0.666666686534882;0.370370358228683 0 0.629629611968994;0.407407402992249 0 0.592592597007751;0.444444447755814 0 0.555555582046509;0.481481492519379 0 0.518518507480621;0.518518507480621 0 0.481481492519379;0.555555582046509 0 0.444444447755814;0.592592597007751 0 0.407407402992249;0.629629611968994 0 0.370370358228683;0.666666686534882 0 0.333333343267441;0.703703701496124 0 0.296296298503876;0.740740716457367 0 0.259259253740311;0.777777791023254 0 0.222222223877907;0.814814805984497 0 0.185185179114342;0.851851880550385 0 0.148148149251938;0.888888895511627 0 0.111111111938953;0.92592591047287 0 0.0740740746259689;0.962962985038757 0 0.0370370373129845;1 0 0],...
-%     'FontName','Arial','FontSize',13,'FontWeight','bold','GridAlpha',0.05,...
-%     'LineWidth',2);
-colorbar(gca,'Ticks',[1 10 20 30 40 50],...
-     'TickLabels',{'1970','1980','1990','2000','2010','2020'})
-xlabel('Latitude(\circN)')
-ylabel('Latitude(\circN)')
-xlim([45,57])
-ylim([45,57])
+GAMdata=[];
+for i=1:size(TLTrue,2)
+    ID=i*ones(27,1);
+    temp1=TLTrue(1,i);
+    temp2=TLTrue(25:end-1,i);
+    temp3=(1993:2019)';
+    temp4=Lat_C(1:end-1)';
+    temp5=temperature;
+    Temp=[ID,temp2,temp3,temp4,temp1*ones(length(temp3),1),temp5];
+    GAMdata=[GAMdata;Temp];
+end
 
+GAMdata = rmmissing(GAMdata); 
 
-subplot(223)
-[datafit1]=Confidednce95Interval(yearTrimMeanAll(1:end,3),yearTrimMeanAll(1:end,4))
-hold on
-[AdjustedR21]=ColorFig2(yearTrimMeanAll(1:end,3),yearTrimMeanAll(1:end,4))
-xlim([50,54]);
-% ylim([48,58]);
-title('Trophic level 3 vs Trophic leve 4')
-% set(gca,'CLim',[1 28],'Colormap',...
-%     [0 0 1;0.0370370373129845 0 0.962962985038757;0.0740740746259689 0 0.92592591047287;0.111111111938953 0 0.888888895511627;0.148148149251938 0 0.851851880550385;0.185185179114342 0 0.814814805984497;0.222222223877907 0 0.777777791023254;0.259259253740311 0 0.740740716457367;0.296296298503876 0 0.703703701496124;0.333333343267441 0 0.666666686534882;0.370370358228683 0 0.629629611968994;0.407407402992249 0 0.592592597007751;0.444444447755814 0 0.555555582046509;0.481481492519379 0 0.518518507480621;0.518518507480621 0 0.481481492519379;0.555555582046509 0 0.444444447755814;0.592592597007751 0 0.407407402992249;0.629629611968994 0 0.370370358228683;0.666666686534882 0 0.333333343267441;0.703703701496124 0 0.296296298503876;0.740740716457367 0 0.259259253740311;0.777777791023254 0 0.222222223877907;0.814814805984497 0 0.185185179114342;0.851851880550385 0 0.148148149251938;0.888888895511627 0 0.111111111938953;0.92592591047287 0 0.0740740746259689;0.962962985038757 0 0.0370370373129845;1 0 0],...
-%     'FontName','Arial','FontSize',13,'FontWeight','bold','GridAlpha',0.05,...
-%     'LineWidth',2);
-% colorbar(gca,'Ticks',[1 8 18 28],...
-%     'TickLabels',{'1993','2000','2010','2020'})
-colorbar(gca,'Ticks',[1 10 20 30 40 50],...
-     'TickLabels',{'1970','1980','1990','2000','2010','2020'})
-xlabel('Latitude(\circN)')
-ylabel('Latitude(\circN)')
-xlim([44,57])
-ylim([40,58])
+%% £¨LMM£©
+GAMdata = rmmissing(GAMdata);  
 
-subplot(224)
-[datafit1]=Confidednce95Interval(yearTrimMeanAll(1:end,4),yearTrimMeanAll(1:end,5))
-hold on
-[AdjustedR21]=ColorFig2(yearTrimMeanAll(1:end,4),yearTrimMeanAll(1:end,5))
-xlim([46,54]);
-% ylim([48,58]);
-title('Trophic level 4 vs Trophic leve 5')
-% set(gca,'CLim',[1 28],'Colormap',...
-%     [0 0 1;0.0370370373129845 0 0.962962985038757;0.0740740746259689 0 0.92592591047287;0.111111111938953 0 0.888888895511627;0.148148149251938 0 0.851851880550385;0.185185179114342 0 0.814814805984497;0.222222223877907 0 0.777777791023254;0.259259253740311 0 0.740740716457367;0.296296298503876 0 0.703703701496124;0.333333343267441 0 0.666666686534882;0.370370358228683 0 0.629629611968994;0.407407402992249 0 0.592592597007751;0.444444447755814 0 0.555555582046509;0.481481492519379 0 0.518518507480621;0.518518507480621 0 0.481481492519379;0.555555582046509 0 0.444444447755814;0.592592597007751 0 0.407407402992249;0.629629611968994 0 0.370370358228683;0.666666686534882 0 0.333333343267441;0.703703701496124 0 0.296296298503876;0.740740716457367 0 0.259259253740311;0.777777791023254 0 0.222222223877907;0.814814805984497 0 0.185185179114342;0.851851880550385 0 0.148148149251938;0.888888895511627 0 0.111111111938953;0.92592591047287 0 0.0740740746259689;0.962962985038757 0 0.0370370373129845;1 0 0],...
-%     'FontName','Arial','FontSize',13,'FontWeight','bold','GridAlpha',0.05,...
-%     'LineWidth',2);
-colorbar(gca,'Ticks',[1 10 20 30 40 50],...
-     'TickLabels',{'1970','1980','1990','2000','2010','2020'})
-xlabel('Latitude(\circN)')
-ylabel('Latitude(\circN)')
-% xlim([44,57])
-ylim([30,58])
-xlim([42,57])
+% 
+tbl = table( ...
+    categorical(GAMdata(:,1)), ...     % family
+    GAMdata(:,2), ...                  % lat_family
+    normalize(GAMdata(:,3)), ...       % year (Standard)
+    normalize(GAMdata(:,4)), ...       % lat_chl (Standard)
+    normalize(GAMdata(:,5)), ...       % TL (Standard)
+    normalize(GAMdata(:,6)), ...       % temp (Standard)
+    'VariableNames', {'family','lat','year','lat_chl','TL','temp'});
+
+%% ==========================================================
+% LMM
+% lat ~ year + lat_chl + TL + temp + (1|family)
+%% ==========================================================
+lme = fitlme(tbl, 'lat ~ year + lat_chl + TL + temp + (1|family)', 'FitMethod', 'REML');
+%% ==========================================================
+coef_table = dataset2table(lme.Coefficients);
+disp(coef_table);
+%% ==========================================================
+y_true = tbl.lat;
+y_pred = predict(lme, tbl);  
+SS_res = sum((y_true - y_pred).^2);
+SS_tot = sum((y_true - mean(y_true)).^2);
+R2_marginal = 1 - SS_res/SS_tot;  
+RMSE = sqrt(mean((y_true - y_pred).^2));
+
+fprintf('R2: %.4f\n', R2_marginal);
+
+%% ==========================================================
+fixed_coefs = coef_table.Estimate(2:end);   
+fixed_names = coef_table.Name(2:end);
+p_values = coef_table.pValue(2:end);
+
+stars = repmat({''}, size(p_values));
+stars(p_values < 0.05) = {'*'};
+stars(p_values < 0.01) = {'**'};
+stars(p_values < 0.001) = {'***'};
+
+figure;
+bar(abs(fixed_coefs));
+set(gca, 'XTickLabel', fixed_names, 'XTickLabelRotation', 30);
+ylabel('|Standardized ¦Â| (weight)');
+grid on;
 
